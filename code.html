@@ -1,0 +1,1682 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>eLock — Secure When Needed. Release When It Matters. | Kyodensha Technologies</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            canvas: "#f8fafc",
+            "canvas-subtle": "#f1f5f9",
+            dark: "#0a0a0a",
+            "dark-muted": "#1e293b",
+            "brand-navy": "#0f2b5c",
+            "brand-navy-dark": "#0a1936",
+            "brand-blue": "#1e3a8a",
+            "brand-electric": "#2563eb",
+            "brand-orange": "#ea580c",
+            "brand-orange-light": "#f97316",
+            "card-bg": "#ffffff",
+            "line-subtle": "#e2e8f0",
+            accent: "#ea580c",
+            "accent-blue": "#2563eb",
+          },
+          fontFamily: {
+            headline: ["'Plus Jakarta Sans'", "sans-serif"],
+            grotesk: ["'Space Grotesk'", "sans-serif"],
+            body: ["'Inter'", "sans-serif"],
+          },
+          letterSpacing: {
+            tighter: "-0.05em",
+            tightest: "-0.075em",
+            mega: "0.2em",
+          }
+        }
+      }
+    }
+</script>
+<style>
+    body {
+      background-color: #f8fafc;
+      color: #0a0a0a;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection {
+      background-color: #0f2b5c;
+      color: #ffffff;
+    }
+
+    /* Kinetic micro-animations & transitions */
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(0.4deg); }
+    }
+    @keyframes subtlePulseGlow {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.08); }
+    }
+    @keyframes telemetryShimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
+    }
+    @keyframes beamFlow {
+      0% { stroke-dashoffset: 40; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    .animate-hero-float {
+      animation: heroFloat 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .animate-pulse-glow {
+      animation: subtlePulseGlow 3s ease-in-out infinite;
+    }
+    .shimmer-active::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%);
+      animation: telemetryShimmer 2.4s infinite;
+      pointer-events-none;
+    }
+
+    /* Scroll reveal transitions */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Micro-interactive button states */
+    .btn-magnetic {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-magnetic:hover {
+      transform: translateY(-1.5px) scale(1.02);
+    }
+    .btn-magnetic:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    /* Smooth custom easing for cards */
+    .spring-card {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+    }
+    .spring-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Circuit highlight animation */
+    .schematic-active-line {
+      stroke: #ea580c !important;
+      stroke-width: 2.5px !important;
+      stroke-dasharray: 6 3;
+      animation: beamFlow 0.8s linear infinite;
+      filter: drop-shadow(0 0 6px #ea580c);
+    }
+    .schematic-active-core {
+      stroke: #38bdf8 !important;
+      stroke-width: 2px !important;
+      filter: drop-shadow(0 0 8px #38bdf8);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+</style>
+</head>
+<body class="bg-[#f8fafc] text-[#0a0a0a] font-body selection:bg-brand-navy selection:text-white relative overflow-x-hidden">
+<!-- TOP MINIMAL NAV -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-sm">
+<div class="max-w-[1720px] mx-auto px-6 md:px-8 h-20 flex items-center justify-between gap-4">
+<!-- Left Group: Logo + Divider + Subtitle + Badge -->
+<div class="flex items-center shrink-0">
+<a class="flex items-center group transition-transform duration-300 hover:scale-[1.02]" href="#">
+<img alt="eLock Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOFAj7YTN2JurT0BYuWBeGHlPMHAHQtL_MP8Br--EOZUOl9NltPayKfgysIr3zXWY9l2xyRyEnCMG88Bl2viajaaaFR8sDSZYas0zc9GO8cB4O6X08lUMNSL7nn96vNmRW1o7f4YYRsEk6IRGiKSRaW265NwmSGxFQnWchVm9E3bnzXERodvlRsSSJGTF8WgLaM34kRTLlRVWuiciyZW484PSyOLsRq7z2UcgNGLP2DCB_klTPoCNsEwzD2wQrjKDEvQ">
+</a>
+<div class="h-5 w-px bg-slate-200 mx-3"></div>
+<div class="flex items-center gap-2 whitespace-nowrap">
+<span class="text-[11px] font-medium tracking-wider text-slate-500 uppercase whitespace-nowrap">KYODENSHA TECHNOLOGIES • EST. 1990</span>
+<span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-600 border border-blue-200/60 text-[10px] font-semibold tracking-wider whitespace-nowrap ml-2 relative overflow-hidden group">
+<span class="relative z-10">[ WORKSHEET ACTIVE ]</span>
+<span class="absolute inset-0 bg-blue-100 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+</span>
+</div>
+</div>
+<!-- Center Navigation Capsule -->
+<nav class="hidden lg:flex items-center bg-slate-100/90 border border-slate-200/80 p-1.5 rounded-full space-x-1 shadow-sm whitespace-nowrap">
+<a class="bg-[#0f172a] text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-sm tracking-wide transition-all hover:bg-slate-800" href="#overview">OVERVIEW</a>
+<a class="text-slate-600 hover:text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full transition-all hover:bg-white/80 whitespace-nowrap tracking-wide" href="#release-section">FAIL-SAFE</a>
+<a class="text-slate-600 hover:text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full transition-all hover:bg-white/80 whitespace-nowrap tracking-wide" href="#schematic">DOOR SYSTEM</a>
+<a class="text-slate-600 hover:text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full transition-all hover:bg-white/80 whitespace-nowrap tracking-wide" href="#cost-quality">REAL COST</a>
+<a class="text-slate-600 hover:text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full transition-all hover:bg-white/80 whitespace-nowrap tracking-wide" href="#specifications">TESTING &amp; LAB</a>
+<a class="text-slate-600 hover:text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full transition-all hover:bg-white/80 whitespace-nowrap tracking-wide" href="#heritage">OUR STORY</a>
+<a class="text-slate-600 hover:text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full transition-all hover:bg-white/80 whitespace-nowrap tracking-wide" href="#installations">LANDMARKS</a>
+</nav>
+<!-- Right Action Buttons -->
+<div class="flex items-center gap-3 shrink-0 whitespace-nowrap">
+<a class="btn-magnetic hidden sm:inline-flex items-center gap-2 bg-white border border-slate-300 hover:border-slate-400 text-slate-800 text-xs font-semibold px-4 py-2 rounded-full shadow-sm whitespace-nowrap transition-all" href="tel:+60380664636">
+<span class="material-symbols-outlined text-sm text-brand-electric transition-transform group-hover:scale-110">call</span>
+<span class="">TALK TO AN ENGINEER</span>
+</a>
+<a class="btn-magnetic inline-flex items-center gap-2 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-semibold px-5 py-2 rounded-full shadow-sm whitespace-nowrap transition-all group" href="#contact">
+<span class="">PLAN MY DOOR SYSTEM</span>
+<span class="text-xs font-bold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+</a>
+</div>
+</div>
+</header>
+<main class="w-full pt-20" id="overview">
+<!-- 1. CORE BRAND MESSAGE & HERO SECTION -->
+<section class="relative w-full pt-16 md:pt-24 pb-20 border-b border-slate-200 overflow-hidden"><div class="max-w-[1720px] mx-auto px-6 md:px-12 relative z-10"><div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-4"><div class="flex items-center gap-3"><img alt="eLock" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOFAj7YTN2JurT0BYuWBeGHlPMHAHQtL_MP8Br--EOZUOl9NltPayKfgysIr3zXWY9l2xyRyEnCMG88Bl2viajaaaFR8sDSZYas0zc9GO8cB4O6X08lUMNSL7nn96vNmRW1o7f4YYRsEk6IRGiKSRaW265NwmSGxFQnWchVm9E3bnzXERodvlRsSSJGTF8WgLaM34kRTLlRVWuiciyZW484PSyOLsRq7z2UcgNGLP2DCB_klTPoCNsEwzD2wQrjKDEvQ"><span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold uppercase tracking-widest bg-brand-navy text-white shadow-sm">001 // SYSTEM SPECIFICATION</span><span class="text-xs font-mono uppercase tracking-widest text-slate-500">LIFE-SAFETY HARDWARE SPECIFICATION</span><span class="inline-block lg:hidden px-2 py-0.5 rounded text-[10px] font-mono bg-blue-50 text-blue-900 font-semibold border border-blue-200">[ WORKSHEET ACTIVE ]</span></div><div class="flex items-center gap-8 font-mono text-xs text-slate-600 uppercase tracking-widest"><span class="font-bold text-brand-orange flex items-center gap-2">SECURE WHEN NEEDED. RELEASE WHEN IT MATTERS.</span><div class="text-brand-navy font-bold text-sm transition-transform duration-300 hover:translate-y-1 hover:translate-x-1">↘</div></div></div><div class="select-none py-6 my-2"><h1 class="font-headline font-black text-slate-950 tracking-tightest flex flex-col uppercase text-4xl sm:text-6xl md:text-7xl lg:text-[5.5vw] xl:text-[6.2rem] leading-[0.92]"><span class="flex flex-wrap items-baseline justify-between w-full gap-4"><span class="text-slate-950">EVERY</span><span class="font-semibold inline-flex items-center gap-2 tracking-normal font-grotesk text-2xl sm:text-3xl xl:text-4xl self-center px-5 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-brand-orange shadow-sm badge-float-soft"><span class="w-2.5 h-2.5 rounded-full bg-brand-orange animate-ping"></span>[ 0.00MS DELAY ]</span><span class="text-slate-950">SECOND</span></span><span class="flex flex-wrap items-baseline justify-between w-full text-slate-900 transition-colors duration-500 gap-2 sm:gap-4 mt-1"><span class="text-slate-800">MATTERS</span><span class="text-brand-orange text-2xl sm:text-4xl md:text-5xl font-mono self-center font-bold animate-pulse">●</span><span class="text-slate-900">DURING AN <span class="text-brand-orange underline decoration-brand-orange/30 decoration-4 underline-offset-8">EMERGENCY</span>.</span></span></h1></div><div class="grid grid-cols-1 gap-8 items-stretch pt-4 lg:grid-cols-2"><div class="border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between space-y-6 bg-white"><div class="space-y-4"><div class="flex items-center gap-2 text-xs font-mono text-slate-400"><span class="px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-brand-navy font-bold text-[10px] uppercase tracking-wider">SYSTEM MANIFESTO</span><span class="text-brand-electric font-semibold flex items-center gap-1.5 text-[11px]"><span class="w-1.5 h-1.5 rounded-full bg-brand-electric"></span>KYODENSHA TECH // EST. 1990</span></div><div class="space-y-2"><p class="text-xs font-mono uppercase tracking-widest text-brand-orange font-bold">SECURE WHEN NEEDED. RELEASE WHEN IT MATTERS.</p><h2 class="text-2xl md:text-3xl font-headline font-black tracking-tight text-brand-navy uppercase leading-tight">Welcome to Elock Malaysia (Kyodensha Technologies).</h2></div><p class="text-slate-700 text-sm leading-relaxed font-body">Your door security system must secure when required, perform reliably over time, and release when it matters most. When a door fails, the consequences can go beyond security. In an emergency, seconds matter. A door security system must perform reliably when people depend on it.</p><p class="text-slate-600 text-xs md:text-sm leading-relaxed font-body">Elock builds door security components around reliable performance, system compatibility and the moments that matter.</p></div><div class="pt-4 border-t border-slate-100 flex flex-wrap items-center gap-3"><a class="btn-magnetic px-5 py-3 rounded-full bg-brand-navy text-white font-headline text-xs font-bold uppercase tracking-wider hover:bg-blue-900 transition-all flex items-center gap-2 shadow-sm group" href="#contact"><span class="">PLAN MY DOOR SYSTEM</span><span class="font-mono text-xs text-brand-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">↗</span></a><a class="btn-magnetic px-5 py-3 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 font-headline text-xs font-bold uppercase tracking-wider transition-all" href="tel:+60380664636"><span class="">TALK TO AN ENGINEER</span></a></div></div><div class="rounded-3xl bg-[#0a1936] text-white border border-slate-800 shadow-xl p-6 md:p-8 flex flex-col justify-between spring-card relative overflow-hidden" id="heroHardwareCard" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px);"><div class="absolute inset-0 bg-gradient-to-br from-brand-navy-dark/95 via-slate-950/90 to-black pointer-events-none"></div><div class="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div><div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-orange/5 rounded-full blur-3xl pointer-events-none"></div><div class="relative z-10"><div class="flex items-center justify-between gap-4 mb-3"><div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white font-mono text-[10px] md:text-xs tracking-wider uppercase backdrop-blur-md"><span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span><span class="">FLAGSHIP SPEC // REF. ELOCK-600A</span></div><a class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-orange border border-white/20 hover:border-brand-orange text-white flex items-center justify-center font-grotesk text-sm transition-all duration-300 shadow-lg group/inspect" href="#best-sellers" title="View Architectural Magnet Specifications"><span class="transition-transform group-hover/inspect:scale-110">↗</span></a></div><h3 class="text-2xl font-headline font-black text-white uppercase tracking-tight mb-2">600 Lbs Architectural Magnet</h3></div><div class="relative z-10 w-full flex items-center justify-center py-2 my-2 group/img"><div class="relative w-full max-w-lg flex flex-col items-center justify-center rounded-xl overflow-hidden bg-slate-950/40 p-4 border border-white/5"><img alt="600 Lbs Architectural Magnet ELOCK-600A Hardware Showcase" class="w-full h-auto max-h-[220px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover/img:scale-[1.03]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW2ZbyYRTODUZMKCEmAcpNbxnrWjW8MG1pD0LLkEB_QgGh0XjNrwUFw_vZR0M2UTl9gA8SBDVeRUMq5iorV_ksiWNobihLRYQ09EXSR8667AIhR9JTWza5VXASyjO-G6pZgx676tHRW8VutWJjSUWEl8Rt_tNo6-bsi5Q3z3FGaEFRbQ_82iWaotHyulsL_xlJMxfJFCjMcWcR5RTiOb2l3PewNGHUHc_UTAoKwTL4RQMMtdQ-HlfGQrttSM-fgqdEXg"></div></div><div class="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between gap-4 font-mono text-xs"><div><span class="block text-[9px] text-slate-400 uppercase tracking-widest">HOLDING FORCE</span><span class="font-bold text-white tracking-wider text-xs md:text-sm">280 KG / 600 LBS</span></div><div class="text-right"><span class="block text-[9px] text-slate-400 uppercase tracking-widest">OPERATING VOLT</span><span class="font-bold text-blue-300 tracking-wider text-xs md:text-sm">12V / 24V DUAL SELECT</span></div></div></div></div><div class="mt-8 py-5 px-8 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-6 font-mono text-xs uppercase text-slate-600 shadow-sm bg-white"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span><span class="font-bold text-brand-navy">CREDIBILITY &amp; ASSURANCE:</span></div><div class="flex flex-wrap items-center gap-6 md:gap-8"><span class="hover:text-brand-navy hover:scale-105 transition-all font-medium cursor-default">CE COMPLIANT</span><span class="text-slate-300 hidden sm:inline">•</span><span class="hover:text-brand-navy hover:scale-105 transition-all font-medium cursor-default">ISO 9001 MANUFACTURING</span><span class="text-slate-300 hidden sm:inline">•</span><span class="hover:text-brand-navy hover:scale-105 transition-all font-medium cursor-default">MADE IN MALAYSIA</span><span class="text-slate-300 hidden sm:inline">•</span><span class="hover:text-brand-navy hover:scale-105 transition-all font-medium cursor-default">MCMC APPROVED</span><span class="text-slate-300 hidden sm:inline">•</span><span class="hover:text-brand-navy hover:scale-105 transition-all font-medium cursor-default">SINCE 1990</span><span class="text-slate-300 hidden sm:inline">•</span><span class="hover:text-brand-navy hover:scale-105 transition-all font-medium cursor-default">EXPORTED TO 75+ COUNTRIES</span><span class="text-slate-300 hidden sm:inline">•</span><span class="text-brand-navy font-bold hover:scale-105 transition-transform cursor-default">108,239+ SATISFIED CLIENTS</span></div></div></div></section>
+<!-- 2. SECTION: SECURE WHEN NEEDED, RELEASE WHEN IT MATTERS -->
+<section class="py-20 md:py-24 border-b border-slate-200 bg-white" id="best-sellers"><div class="max-w-[1720px] mx-auto px-6 md:px-12">
+  <!-- Header with Category Tabs & Carousel Nav Buttons -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 reveal-item revealed">
+    <div>
+      <div class="flex items-center gap-3 mb-2">
+        <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-brand-navy text-white">002 // HARDWARE LINEUP</span>
+        <span class="text-xs font-mono uppercase tracking-widest text-slate-500">PROVEN FAIL-SAFE ECOSYSTEM</span>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-headline font-black tracking-tight text-brand-navy uppercase">
+        PRODUCTS &amp; SPECIFICATIONS
+      </h2>
+    </div>
+    <div class="flex items-center gap-4 font-mono text-xs uppercase tracking-widest">
+      <span class="text-slate-400 hidden lg:inline">CATALOGUE: 96 REFERENCE MODELS</span>
+      <!-- Carousel Arrow Controls & Step Counter -->
+      <div class="flex items-center gap-3 bg-slate-100 p-1.5 rounded-full border border-slate-200">
+        <span class="px-3 text-xs font-mono font-bold text-slate-600 select-none" id="productCarouselCounter">01 / 06</span>
+        <button aria-label="Previous product" class="w-9 h-9 rounded-full bg-white hover:bg-brand-navy hover:text-white text-slate-700 flex items-center justify-center border border-slate-200 transition-all shadow-sm active:scale-95" id="carouselPrevBtn" type="button">
+          <span class="material-symbols-outlined text-base">arrow_back</span>
+        </button>
+        <button aria-label="Next product" class="w-9 h-9 rounded-full bg-brand-orange hover:bg-orange-700 text-white flex items-center justify-center transition-all shadow-sm active:scale-95" id="carouselNextBtn" type="button">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </button>
+      </div>
+      <a class="btn-magnetic px-5 py-2.5 rounded-full bg-slate-100 hover:bg-brand-navy hover:text-white text-brand-navy font-headline text-xs font-bold uppercase tracking-wider transition-all hidden sm:inline-flex items-center gap-1.5 border border-slate-200 group" href="https://www.elock2u.net/product/" target="_blank">
+        <span class="">ALL MODELS</span><span class="text-brand-orange group-hover:text-white transition-colors">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Interactive Filter Category Pills -->
+  <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scroll-smooth select-none border-b border-slate-100" id="productFilterBar">
+    <button class="product-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all bg-brand-navy text-white shadow-sm shrink-0" data-category="all">
+      All Ecosystem (06)
+    </button>
+    <button class="product-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all bg-slate-100 hover:bg-slate-200 text-slate-600 shrink-0" data-category="locks">
+      Magnetic Door Locks
+    </button>
+    <button class="product-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all bg-slate-100 hover:bg-slate-200 text-slate-600 shrink-0" data-category="release">
+      Emergency &amp; Exit Release
+    </button>
+    <button class="product-filter-btn px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all bg-slate-100 hover:bg-slate-200 text-slate-600 shrink-0" data-category="power">
+      Power Supplies &amp; Controllers
+    </button>
+  </div>
+
+  <!-- Product Cards Horizontal Carousel Container -->
+  <div class="relative overflow-hidden">
+    <div class="flex gap-6 overflow-x-auto scroll-smooth pb-6 pt-2 cursor-grab active:cursor-grabbing select-none" id="productCarouselTrack" style="scrollbar-width: none; -ms-overflow-style: none;">
+      
+      <!-- Slide 1: ELOCK-600A EM Lock -->
+      <div class="product-card spring-card shrink-0 w-[310px] sm:w-[360px] md:w-[380px] p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all flex flex-col justify-between group" data-category="locks">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">REF. E-600A</span>
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-brand-orange text-white shadow-sm">BEST SELLER</span>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 p-6 flex flex-col items-center justify-center min-h-[210px] mb-4 group/img relative">
+            <img alt="ELOCK-600A Architectural Electromagnetic Lock" class="h-36 w-auto object-contain group-hover/img:scale-105 transition-transform duration-500 filter drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClhMLqD_on6CODsHK_1x3Ihcc0pYzGFr4cbwbrh-wmmL2LxGKZQPgaOGUjE6wHiDK18GhBeNiXanSr43Lz87yBV6q-xVtt3g8QPOYE7-JLup06aSFUIC6elBiXHbAp1dN1xYe3KGyVFqohJKNDNEwOG2CYEfMprHIa4Jx6aCIge8oQHreL735lMJq9tRWoY-8NahZKgbf8fBzYCo7YArbT_JCEq3KHfrYn7VrneNPl2FMbaWsfeImBzp5sMnr3mT6Oog">
+            <span class="mt-3 text-[10px] font-mono uppercase tracking-widest text-slate-400 self-start">SATIN ANODISED ALUM</span>
+          </div>
+          <div class="space-y-3 mt-4">
+            <div class="text-[11px] font-mono font-bold tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
+              <span class="">MAGNETIC LOCK</span><span class="">•</span><span class="text-brand-navy">280 KG / 600 LBS</span>
+            </div>
+            <h3 class="font-headline font-bold text-2xl text-brand-navy group-hover:text-brand-blue transition-colors">ELOCK–600A EM Lock</h3>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed font-body">
+              Heavy-duty electromagnetic lock with anodised aluminium housing and built-in kick-off button for instant unconditional release. Standard for single swing doors.
+            </p>
+          </div>
+        </div>
+        <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between font-mono text-xs">
+          <a class="text-slate-500 hover:text-brand-navy font-semibold transition-colors uppercase tracking-wider flex items-center gap-1" href="#contact">
+            <span class="">DATASHEET PDF</span>
+          </a>
+          <a class="text-brand-navy hover:text-brand-orange font-bold uppercase tracking-wider flex items-center gap-1 transition-colors group/btn" href="#contact">
+            <span class="">REQUEST QUOTE</span><span class="text-brand-orange transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slide 2: ELOCK-1200 EM Lock -->
+      <div class="product-card spring-card shrink-0 w-[310px] sm:w-[360px] md:w-[380px] p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all flex flex-col justify-between group" data-category="locks">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">REF. E-1200</span>
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-brand-orange text-white shadow-sm">HEAVY DUTY</span>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 p-6 flex flex-col items-center justify-center min-h-[210px] mb-4 group/img relative">
+            <img alt="ELOCK-1200 Heavy Duty EM Lock" class="h-36 w-auto object-contain group-hover/img:scale-105 transition-transform duration-500 filter drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwclqrsIb-8kdxsDepNRe2GfXYNdGDMtRLO00-oACZ-ubIwui84S_oVNngH8ObGUb9mUntPJKCcievUjnvJUEwbhrIonHdQMinFrWDW1YoYxiPXn-PGl6oYeAqJr-8OnWunh8fbpEetuC2b5nKqucFDj5u1UGPrvCHLJObpsVjXgx4WOeaFgT1BfgzNphdVrORuK8ajPdmucSXbT0-GHU97cy7RfNi5HJATdvD8uHEpeT8KS1w22XXXKMZ8-GkanAMGg">
+            <span class="mt-3 text-[10px] font-mono uppercase tracking-widest text-slate-400 self-start">DUAL REED MONITOR</span>
+          </div>
+          <div class="space-y-3 mt-4">
+            <div class="text-[11px] font-mono font-bold tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
+              <span class="">HIGH RETENTION</span><span class="">•</span><span class="text-brand-navy">545 KG / 1200 LBS</span>
+            </div>
+            <h3 class="font-headline font-bold text-2xl text-brand-navy group-hover:text-brand-blue transition-colors">ELOCK–1200 EM Lock</h3>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed font-body">
+              High holding force electromagnetic lock engineered for heavy timber, armor metal perimeter portals, and high-risk fire exits. Built-in dual reed status feedback.
+            </p>
+          </div>
+        </div>
+        <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between font-mono text-xs">
+          <a class="text-slate-500 hover:text-brand-navy font-semibold transition-colors uppercase tracking-wider flex items-center gap-1" href="#contact">
+            <span class="">DATASHEET PDF</span>
+          </a>
+          <a class="text-brand-navy hover:text-brand-orange font-bold uppercase tracking-wider flex items-center gap-1 transition-colors group/btn" href="#contact">
+            <span class="">REQUEST QUOTE</span><span class="text-brand-orange transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slide 3: Emergency Break Glass / Release -->
+      <div class="product-card spring-card shrink-0 w-[310px] sm:w-[360px] md:w-[380px] p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all flex flex-col justify-between group" data-category="release">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">REF. E-BG100</span>
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-brand-orange text-white shadow-sm">LIFE-SAFETY</span>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 p-6 flex flex-col items-center justify-center min-h-[210px] mb-4 group/img relative">
+            <img alt="Emergency Door Release Break Glass Unit" class="h-36 w-auto object-contain group-hover/img:scale-105 transition-transform duration-500 filter drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_aqW5_CzW6PCIaorj8JPHw80q6cy2llhMrYc8xNcZy_awiBUFT6xcUQwjna3be0I807kx2fHRQQize_uMJTlQmXrsFnGwgOHB0MtlRozGremVKT6ye9fFPOyX_zmhBC5nfqPuPk1RdM9eXI3h2QCP_x0-eatzLaN9KYMHdafAQne6AG1C6JfIZRiSc05znQ7NW4Nz8LjQma13Ej6eoe9NI3FAe3RE55ar7Ann_FlOQrJOib9D7mtonfsgJPN14yO9qA">
+            <span class="mt-3 text-[10px] font-mono uppercase tracking-widest text-slate-400 self-start">PHYSICAL CIRCUIT CUT</span>
+          </div>
+          <div class="space-y-3 mt-4">
+            <div class="text-[11px] font-mono font-bold tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
+              <span class="">FIRE LIFE-SAFETY</span><span class="">•</span><span class="text-brand-orange font-bold">DPDT DUAL POLE</span>
+            </div>
+            <h3 class="font-headline font-bold text-2xl text-brand-navy group-hover:text-brand-blue transition-colors">Emergency Door Release</h3>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed font-body">
+              NFPA 101 mandated fire life-safety release unit that physically severs DC voltage lines to magnetic locks. Immediate manual escape override with resettable key glass.
+            </p>
+          </div>
+        </div>
+        <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between font-mono text-xs">
+          <a class="text-slate-500 hover:text-brand-navy font-semibold transition-colors uppercase tracking-wider flex items-center gap-1" href="#contact">
+            <span class="">DATASHEET PDF</span>
+          </a>
+          <a class="text-brand-navy hover:text-brand-orange font-bold uppercase tracking-wider flex items-center gap-1 transition-colors group/btn" href="#contact">
+            <span class="">REQUEST QUOTE</span><span class="text-brand-orange transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slide 4: Drop Bolt Action Lock E-B100 -->
+      <div class="product-card spring-card shrink-0 w-[310px] sm:w-[360px] md:w-[380px] p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all flex flex-col justify-between group" data-category="locks">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">REF. E-B100</span>
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-blue-100 text-blue-900 border border-blue-200">CONCEALED</span>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 p-6 flex flex-col items-center justify-center min-h-[210px] mb-4 group/img relative">
+            <img alt="Drop Bolt Action Lock E-B100" class="h-36 w-auto object-contain group-hover/img:scale-105 transition-transform duration-500 filter drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClhMLqD_on6CODsHK_1x3Ihcc0pYzGFr4cbwbrh-wmmL2LxGKZQPgaOGUjE6wHiDK18GhBeNiXanSr43Lz87yBV6q-xVtt3g8QPOYE7-JLup06aSFUIC6elBiXHbAp1dN1xYe3KGyVFqohJKNDNEwOG2CYEfMprHIa4Jx6aCIge8oQHreL735lMJq9tRWoY-8NahZKgbf8fBzYCo7YArbT_JCEq3KHfrYn7VrneNPl2FMbaWsfeImBzp5sMnr3mT6Oog">
+            <span class="mt-3 text-[10px] font-mono uppercase tracking-widest text-slate-400 self-start">MORTISE ELECTRIC BOLT</span>
+          </div>
+          <div class="space-y-3 mt-4">
+            <div class="text-[11px] font-mono font-bold tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
+              <span class="">SOLID STEEL PIN</span><span class="">•</span><span class="text-brand-navy">FAIL-SAFE UNLOCK</span>
+            </div>
+            <h3 class="font-headline font-bold text-2xl text-brand-navy group-hover:text-brand-blue transition-colors">E-B100 Electric Bolt</h3>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed font-body">
+              Concealed stainless steel electronic drop bolt for 180-degree double-swing glass doors. Features auto-relock sensor delay and magnetic position sensing.
+            </p>
+          </div>
+        </div>
+        <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between font-mono text-xs">
+          <a class="text-slate-500 hover:text-brand-navy font-semibold transition-colors uppercase tracking-wider flex items-center gap-1" href="#contact">
+            <span class="">DATASHEET PDF</span>
+          </a>
+          <a class="text-brand-navy hover:text-brand-orange font-bold uppercase tracking-wider flex items-center gap-1 transition-colors group/btn" href="#contact">
+            <span class="">REQUEST QUOTE</span><span class="text-brand-orange transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slide 5: Clean Power Supply & Battery Charger PSU-3A -->
+      <div class="product-card spring-card shrink-0 w-[310px] sm:w-[360px] md:w-[380px] p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all flex flex-col justify-between group" data-category="power">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">REF. E-PSU3A</span>
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-brand-navy text-white shadow-sm">CONTINUOUS DC</span>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-[#0a1936] text-white border border-slate-800 p-6 flex flex-col items-center justify-center min-h-[210px] mb-4 group/img relative">
+            <div class="w-24 h-24 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center p-3 shadow-inner">
+              <span class="material-symbols-outlined text-4xl text-brand-electric mb-1">bolt</span>
+              <span class="text-[10px] font-mono font-bold tracking-wider text-blue-200 uppercase">12V 3A / 5A</span>
+            </div>
+            <span class="mt-3 text-[10px] font-mono uppercase tracking-widest text-slate-400 self-start">INTEGRATED BACKUP CHARGER</span>
+          </div>
+          <div class="space-y-3 mt-4">
+            <div class="text-[11px] font-mono font-bold tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
+              <span class="">REGULATED PSU</span><span class="">•</span><span class="text-brand-navy">FIRE ALARM CUT BUS</span>
+            </div>
+            <h3 class="font-headline font-bold text-2xl text-brand-navy group-hover:text-brand-blue transition-colors">eLock Regulated PSU</h3>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed font-body">
+              Industrial linear power supply unit with surge suppression, thermal circuit breakers, trickle battery charging, and dry fire-alarm signal bypass relay.
+            </p>
+          </div>
+        </div>
+        <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between font-mono text-xs">
+          <a class="text-slate-500 hover:text-brand-navy font-semibold transition-colors uppercase tracking-wider flex items-center gap-1" href="#contact">
+            <span class="">DATASHEET PDF</span>
+          </a>
+          <a class="text-brand-navy hover:text-brand-orange font-bold uppercase tracking-wider flex items-center gap-1 transition-colors group/btn" href="#contact">
+            <span class="">REQUEST QUOTE</span><span class="text-brand-orange transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slide 6: Touchless Wave Exit Button E-EB860 -->
+      <div class="product-card spring-card shrink-0 w-[310px] sm:w-[360px] md:w-[380px] p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all flex flex-col justify-between group" data-category="release">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">REF. E-EB860</span>
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200">TOUCHLESS IR</span>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 p-6 flex flex-col items-center justify-center min-h-[210px] mb-4 group/img relative">
+            <div class="w-24 h-24 rounded-2xl bg-white border border-slate-200 flex flex-col items-center justify-center text-center p-3 shadow-sm">
+              <span class="material-symbols-outlined text-4xl text-brand-navy mb-1">sensors</span>
+              <span class="text-[10px] font-mono font-bold text-slate-500 uppercase">WAVE SENSOR</span>
+            </div>
+            <span class="mt-3 text-[10px] font-mono uppercase tracking-widest text-slate-400 self-start">STAINLESS 304 FACEPLATE</span>
+          </div>
+          <div class="space-y-3 mt-4">
+            <div class="text-[11px] font-mono font-bold tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
+              <span class="">INFRARED EGRESS</span><span class="">•</span><span class="text-brand-navy">DUAL COLOR LED</span>
+            </div>
+            <h3 class="font-headline font-bold text-2xl text-brand-navy group-hover:text-brand-blue transition-colors">Touchless Infrared Switch</h3>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed font-body">
+              Hospital-grade touchless infrared egress button preventing microbial transfer. Dual-state illuminated halo with adjustable detection range from 3cm to 15cm.
+            </p>
+          </div>
+        </div>
+        <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between font-mono text-xs">
+          <a class="text-slate-500 hover:text-brand-navy font-semibold transition-colors uppercase tracking-wider flex items-center gap-1" href="#contact">
+            <span class="">DATASHEET PDF</span>
+          </a>
+          <a class="text-brand-navy hover:text-brand-orange font-bold uppercase tracking-wider flex items-center gap-1 transition-colors group/btn" href="#contact">
+            <span class="">REQUEST QUOTE</span><span class="text-brand-orange transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Progress / Indicator Dots Bar -->
+  <div class="flex items-center justify-between pt-4 border-t border-slate-100 font-mono text-xs text-slate-400">
+    <div class="flex items-center gap-2" id="carouselIndicatorDots">
+      <span class="carousel-dot w-6 h-2 rounded-full bg-brand-orange transition-all cursor-pointer" data-index="0"></span>
+      <span class="carousel-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all cursor-pointer" data-index="1"></span>
+      <span class="carousel-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all cursor-pointer" data-index="2"></span>
+      <span class="carousel-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all cursor-pointer" data-index="3"></span>
+      <span class="carousel-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all cursor-pointer" data-index="4"></span>
+      <span class="carousel-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all cursor-pointer" data-index="5"></span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+      <span class="uppercase text-[11px] font-semibold text-slate-500">DRAG OR USE ARROWS TO BROWSE FULL RANGE</span>
+    </div>
+  </div>
+</div></section><section class="py-20 md:py-24 border-b border-slate-200 bg-[#f8fafc]" id="release-section">
+<div class="max-w-[1720px] mx-auto px-6 md:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-item revealed">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-brand-navy text-white">SYSTEM PHILOSOPHY</span>
+<span class="text-xs font-mono uppercase tracking-widest text-slate-500">LAB BENCHMARK // 0.00MS RELEASE</span>
+</div>
+<h2 class="text-3xl md:text-5xl font-headline font-black tracking-tight text-brand-navy uppercase">
+SECURE WHEN NEEDED, RELEASE WHEN IT MATTERS.
+</h2>
+</div>
+<p class="text-slate-600 max-w-lg font-mono text-xs uppercase leading-relaxed">
+When the door matters, the system behind it matters. A door security system does more than control access. When quality is compromised, the consequences can extend to security, operations and emergency release.
+</p>
+</div>
+<!-- 3 Visual Moments Grid with interactive hover feedback -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<!-- Moment 1 -->
+<div class="spring-card p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-blue cursor-pointer reveal-item group revealed">
+<div class="space-y-3">
+<div class="flex items-center justify-between font-mono text-[10px] text-brand-navy font-bold">
+<span class="px-2.5 py-1 rounded bg-blue-50 text-brand-blue border border-blue-200 group-hover:bg-brand-blue group-hover:text-white transition-colors">MOMENT 01</span>
+<span class="text-slate-400 group-hover:text-slate-600 transition-colors">EVERYDAY RUN</span>
+</div>
+<h3 class="font-headline font-bold text-xl text-brand-navy group-hover:text-brand-blue transition-colors">Normal Secured Door</h3>
+<p class="text-slate-600 text-sm leading-relaxed">
+Uncompromised everyday access control, aligned holding force, and reliable boundary protection.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between font-mono text-xs text-slate-400">
+<span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue group-hover:animate-ping"></span>STATUS: SECURED</span>
+<span class="text-brand-electric font-semibold">100% ALIGNMENT</span>
+</div>
+</div>
+<!-- Moment 2 -->
+<div class="spring-card p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-orange cursor-pointer reveal-item group revealed">
+<div class="space-y-3">
+<div class="flex items-center justify-between font-mono text-[10px] text-brand-orange font-bold">
+<span class="px-2.5 py-1 rounded bg-orange-50 text-brand-orange border border-orange-200 group-hover:bg-brand-orange group-hover:text-white transition-colors">MOMENT 02</span>
+<span class="text-slate-400 group-hover:text-slate-600 transition-colors">RESILIENCE TEST</span>
+</div>
+<h3 class="font-headline font-bold text-xl text-brand-navy group-hover:text-brand-orange transition-colors">Abnormal / Failure Condition</h3>
+<p class="text-slate-600 text-sm leading-relaxed">
+Diagnostic resilience during power drops, environmental stress, or mechanical fatigue without jamming.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between font-mono text-xs text-slate-400">
+<span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange group-hover:animate-ping"></span>STATUS: DIAGNOSTIC SAFE</span>
+<span class="text-brand-orange font-semibold">ZERO RESIDUAL JAM</span>
+</div>
+</div>
+<!-- Moment 3 -->
+<div class="spring-card p-6 md:p-8 rounded-3xl bg-brand-navy text-white border border-brand-navy-dark shadow-sm flex flex-col justify-between hover:border-orange-500 cursor-pointer reveal-item group revealed">
+<div class="space-y-3">
+<div class="flex items-center justify-between font-mono text-[10px] text-blue-200 font-bold">
+<span class="px-2.5 py-1 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30 group-hover:bg-brand-orange group-hover:text-white transition-colors">MOMENT 03</span>
+<span class="text-blue-300">CRITICAL EGRESS</span>
+</div>
+<h3 class="font-headline font-bold text-xl text-white group-hover:text-orange-300 transition-colors">Emergency Release</h3>
+<p class="text-blue-100 text-sm leading-relaxed">
+Immediate, unconditional fail-safe egress release when human life depends on it.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs text-blue-200">
+<span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-orange-400 animate-ping"></span>STATUS: LIFE-SAFETY DUMP</span>
+<span class="text-orange-400 font-semibold">&lt;15MS UNCONDITIONAL</span>
+</div>
+</div>
+</div>
+<!-- Video Player Container & Protocol List -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"><!-- Left Video Showcase Card -->
+<div class="lg:col-span-7 flex flex-col items-center justify-center rounded-3xl bg-[#0a0f1d] border border-slate-800 p-8 md:p-12 text-center relative overflow-hidden min-h-[340px] shadow-2xl reveal-item revealed">
+  <div class="relative flex flex-col items-center justify-center my-auto">
+    <button aria-label="Play fail-safe release demonstration" class="btn-magnetic w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#ea580c] hover:bg-[#c2410c] text-white flex items-center justify-center shadow-xl shadow-orange-600/40 transition-transform hover:scale-105 group/play cursor-pointer btn-play-ripple" type="button">
+      <span class="material-symbols-outlined text-3xl md:text-4xl pl-1 text-white leading-none">play_arrow</span>
+    </button>
+    <h3 class="text-sm md:text-base font-headline font-black text-white uppercase tracking-wider mt-6">
+      SEE HOW THE EM-LOCK RELEASES
+    </h3>
+    <p class="text-[11px] md:text-xs font-mono font-semibold text-slate-400 tracking-wider uppercase mt-1.5">
+      4K ULTRA HIGH-SPEED CAMERA 2400 FPS
+    </p>
+  </div>
+</div>
+
+<!-- Right: Physical Disengagement Guarantee Card -->
+<div class="lg:col-span-5 flex flex-col justify-between p-8 md:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm reveal-item revealed">
+  <div>
+    <!-- Top metadata bar -->
+    <div class="flex items-center justify-between font-mono text-xs uppercase tracking-wider mb-3">
+      <span class="font-bold text-brand-orange">CRITICAL RELEASE BENCHMARK</span>
+      <span class="font-semibold text-slate-400">LAB BENCH #08</span>
+    </div>
+    <h3 class="text-xl md:text-2xl font-headline font-black text-slate-900 uppercase tracking-tight mb-6">
+      PHYSICAL DISENGAGEMENT GUARANTEE
+    </h3>
+    <!-- 3 Checkmark Guarantee Items -->
+    <div class="space-y-4 font-body text-xs md:text-sm text-slate-600 leading-relaxed">
+      <div class="flex items-start gap-3">
+        <span class="material-symbols-outlined text-secondary text-lg shrink-0 mt-0.5">check_circle</span>
+        <p class=""><strong class="font-bold text-slate-900">Zero Residual Magnetism:</strong> Integrated spring-loaded separation kick-pin breaks micro-magnetic suction instantly.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="material-symbols-outlined text-secondary text-lg shrink-0 mt-0.5">check_circle</span>
+        <p class=""><strong class="font-bold text-slate-900">Instant De-energization:</strong> Microsecond spark discharge suppression diode architecture dumps coil energy immediately.</p>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="material-symbols-outlined text-secondary text-lg shrink-0 mt-0.5">check_circle</span>
+        <p class=""><strong class="font-bold text-slate-900">Independent Fire Relay Cut:</strong> Direct optical interface without software hang vulnerabilities.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Bottom Action Buttons -->
+  <div class="pt-8 mt-8 border-t border-slate-100 flex flex-wrap items-center gap-3">
+    <a class="btn-magnetic px-7 py-3 rounded-full bg-[#0a1128] hover:bg-slate-800 text-white font-headline text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center justify-center shadow-sm" href="#contact">
+      REQUEST DEMO / SAMPLE
+    </a>
+    <a class="btn-magnetic px-7 py-3 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 font-headline text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center justify-center" href="tel:+60380664636">
+      TALK TO AN ENGINEER
+    </a>
+  </div>
+</div></div>
+</div>
+</section>
+<!-- 3. SECTION: A DOOR IS A SYSTEM — NOT A SINGLE PRODUCT -->
+<section class="py-24 border-b border-slate-200 bg-white" id="schematic">
+<div class="max-w-[1720px] mx-auto px-6 md:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 reveal-item revealed">
+<div>
+<span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-brand-navy text-white mb-3 inline-block">003 // SYSTEM INTEROPERABILITY</span>
+<h2 class="text-4xl md:text-6xl font-headline font-black tracking-tight text-brand-navy uppercase">
+A DOOR IS A SYSTEM — NOT A SINGLE PRODUCT.
+</h2>
+</div>
+<p class="text-slate-600 max-w-md font-mono text-xs uppercase leading-relaxed">
+An electromagnetic lock is only one part of the door. Power supply, access controller, exit device, emergency interface, wiring and installation all influence how the system performs.
+</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4" id="schematicNodes">
+<!-- Node 1 -->
+<div class="schematic-node spring-card p-6 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-brand-blue transition-all cursor-pointer reveal-item revealed" data-schematic="reader">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400 mb-3"><span class="font-bold text-brand-navy">NODE 01</span><span class="">OSDP / WIEGAND</span></div>
+<h4 class="font-headline font-bold text-lg text-brand-navy mb-1">Access Reader / Controller</h4>
+<p class="text-slate-600 text-xs leading-relaxed">Validates encrypted RFID, biometric credentials, and smart device keys with full perimeter event logging.</p>
+</div>
+<!-- Node 2 -->
+<div class="schematic-node spring-card p-6 rounded-2xl bg-brand-navy text-white border border-brand-navy-dark hover:border-blue-400 transition-all cursor-pointer reveal-item revealed" data-schematic="lock">
+<div class="flex items-center justify-between font-mono text-xs text-slate-300 mb-3"><span class="font-bold text-blue-300">NODE 02 // CORE</span><span class="px-2 py-0.5 rounded bg-blue-500/30 text-blue-100 text-[10px]">FAIL-SAFE</span></div>
+<h4 class="font-headline font-bold text-lg text-white mb-1">EM Lock (Holding the door)</h4>
+<p class="text-blue-100 text-xs leading-relaxed">Provides 600 or 1200 lbs continuous magnetic holding force with instant release under emergency cutover.</p>
+</div>
+<!-- Node 3 -->
+<div class="schematic-node spring-card p-6 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-brand-blue transition-all cursor-pointer reveal-item revealed" data-schematic="button">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400 mb-3"><span class="font-bold text-brand-navy">NODE 03</span><span class="">MOMENTARY TOUCH</span></div>
+<h4 class="font-headline font-bold text-lg text-brand-navy mb-1">Architectural Exit Button</h4>
+<p class="text-slate-600 text-xs leading-relaxed">Touchless infrared wave or heavy tactile stainless steel press-to-exit buttons for regular staff egress.</p>
+</div>
+<!-- Node 4 -->
+<div class="schematic-node spring-card p-6 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-brand-orange transition-all cursor-pointer reveal-item revealed" data-schematic="breakglass">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400 mb-3"><span class="font-bold text-brand-orange">NODE 04 // FIRE CUT</span><span class="text-brand-orange font-bold">DPDT ISOLATOR</span></div>
+<h4 class="font-headline font-bold text-lg text-brand-navy mb-1">Emergency Break Glass / Release</h4>
+<p class="text-slate-600 text-xs leading-relaxed">Hard physical circuit interrupter that physically cuts lock supply power without any software hesitation.</p>
+</div>
+<!-- Node 5 -->
+<div class="schematic-node spring-card p-6 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-brand-blue transition-all cursor-pointer reveal-item revealed" data-schematic="psu">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400 mb-3"><span class="font-bold text-brand-navy">NODE 05</span><span class="">12V / 24V LINE</span></div>
+<h4 class="font-headline font-bold text-lg text-brand-navy mb-1">Regulated Power Supply (PSU)</h4>
+<p class="text-slate-600 text-xs leading-relaxed">Filters voltage transients and thermal ripple that cause premature coil degradation and false releases.</p>
+</div>
+<!-- Node 6 -->
+<div class="schematic-node spring-card p-6 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-brand-blue transition-all cursor-pointer reveal-item revealed" data-schematic="battery">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400 mb-3"><span class="font-bold text-brand-navy">NODE 06</span><span class="">STANDBY DC</span></div>
+<h4 class="font-headline font-bold text-lg text-brand-navy mb-1">Continuous Backup Battery</h4>
+<p class="text-slate-600 text-xs leading-relaxed">Maintains portal protection uninterrupted across brownouts, grid maintenance, and line tampering.</p>
+</div>
+</div>
+<!-- Interactive Schematic Display -->
+<div class="lg:col-span-5 bg-brand-navy-dark text-white p-8 md:p-10 rounded-3xl border border-slate-800 flex flex-col justify-between shadow-xl reveal-item revealed">
+<div class="flex items-center justify-between font-mono text-xs border-b border-slate-800 pb-4 mb-6">
+<span class="text-slate-400" id="schematicLabel">CIRCUIT INTEGRITY SCHEMATIC</span>
+<span class="text-blue-400 flex items-center gap-2" id="schematicStatus"><span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>LOOP CLOSED</span>
+</div>
+<div class="my-4 py-6 flex items-center justify-center">
+<svg class="w-full max-w-sm h-64 text-slate-500 transition-all duration-300" fill="none" id="schematicSvg" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+<rect class="transition-all duration-300" height="220" opacity="0.3" rx="6" stroke="#3b82f6" stroke-dasharray="4 4" stroke-width="1.5" width="220" x="50" y="20"></rect>
+<rect fill="#ffffff" fill-opacity="0.03" height="210" opacity="0.6" stroke="#94a3b8" stroke-width="1.5" width="190" x="65" y="28"></rect>
+<!-- Wiring paths -->
+<path class="transition-all duration-300" d="M 160 28 L 160 12 L 280 12 L 280 80" id="path-psu-lock" stroke="#38bdf8" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<path class="transition-all duration-300" d="M 65 130 L 30 130 L 30 190 L 70 190" id="path-reader" stroke="#93c5fd" stroke-width="1.5"></path>
+<path class="transition-all duration-300" d="M 255 130 L 280 130 L 280 170" id="path-breakglass" stroke="#ea580c" stroke-width="1.5"></path>
+<!-- Lock Core -->
+<rect class="transition-all duration-300 cursor-pointer" fill="#2563eb" height="18" id="svg-lock" rx="2" width="100" x="110" y="24"></rect>
+<text fill="#ffffff" font-family="'Space Grotesk'" font-size="8" font-weight="700" text-anchor="middle" x="160" y="36">ELOCK-600A CORE</text>
+<rect fill="#94a3b8" height="6" rx="1" width="80" x="120" y="44"></rect>
+<!-- Reader Node -->
+<rect class="transition-all duration-300 cursor-pointer" fill="#1e293b" height="24" id="svg-reader" rx="2" width="16" x="75" y="120"></rect>
+<circle cx="83" cy="132" fill="#38bdf8" r="3.5"></circle>
+<!-- Break Glass Node -->
+<rect class="transition-all duration-300 cursor-pointer" fill="#ea580c" height="24" id="svg-breakglass" rx="2" width="18" x="230" y="120"></rect>
+<rect fill="#ffffff" fill-opacity="0.9" height="12" rx="1" width="10" x="234" y="126"></rect>
+<!-- PSU Unit -->
+<rect class="transition-all duration-300 cursor-pointer" fill="#1e293b" height="50" id="svg-psu" rx="4" stroke="#3b82f6" stroke-width="1" width="44" x="260" y="60"></rect>
+<text fill="#ffffff" font-family="'Space Grotesk'" font-size="7" font-weight="600" text-anchor="middle" x="282" y="82">PSU 12V</text>
+<rect fill="#38bdf8" height="4" rx="1" width="20" x="272" y="90"></rect>
+</svg>
+</div>
+<div class="mt-6 pt-6 border-t border-slate-800 text-xs font-mono text-slate-400 flex items-center justify-between">
+<div>
+<span class="block text-slate-400 text-[10px]">MANDATE: NFPA 101 EGRESS CODE</span>
+<span class="text-white font-bold">HARD CUTOVER ASSURED</span>
+</div>
+<a class="btn-magnetic px-5 py-2.5 rounded-full bg-brand-orange text-white font-headline text-xs font-bold uppercase tracking-wider hover:bg-orange-700 transition-all inline-flex items-center gap-2 group" href="#contact">
+<span class="">PLAN MY DOOR SYSTEM</span><span class="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. SECTION: WHAT IS THE REAL COST OF CHOOSING THE CHEAPEST COMPONENT? -->
+<section class="py-24 border-b border-slate-200 bg-[#f8fafc]" id="cost-quality">
+<div class="max-w-[1720px] mx-auto px-6 md:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 reveal-item revealed">
+<div>
+<span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-brand-navy text-white mb-3 inline-block">004 // VALUE &amp; RELIABILITY</span>
+<h2 class="text-3xl md:text-5xl lg:text-6xl font-headline font-black tracking-tight text-brand-navy uppercase leading-tight">
+WHAT IS THE REAL COST OF CHOOSING THE CHEAPEST COMPONENT?
+</h2>
+</div>
+<p class="text-slate-600 max-w-xl font-mono text-xs uppercase leading-relaxed">
+A lower purchase price can look attractive today. But reliability, service life, maintenance and emergency performance matter long after the initial purchase. The number on a datasheet is only part of the story. Materials, electrical design, power requirements, application suitability, installation and service life all affect real-world performance.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+<!-- Card 1 -->
+<div class="spring-card p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-blue hover:shadow-xl transition-all group reveal-item cursor-pointer revealed">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center font-mono font-bold text-sm group-hover:bg-brand-navy group-hover:text-white group-hover:scale-110 transition-all">
+01
+</div>
+<h3 class="font-headline font-bold text-lg text-brand-navy group-hover:text-brand-blue transition-colors">EIW Copper Wire</h3>
+<p class="text-slate-600 text-xs leading-relaxed">
+High heat-resistant magnet wire to prevent thermal degradation and coil burnout under 24/7/365 energization.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 font-mono text-[11px] text-brand-electric font-semibold flex items-center justify-between">
+<span class="">THERMAL ENDURANCE</span>
+<span class="text-xs transition-transform group-hover:translate-x-1">→</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="spring-card p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-blue hover:shadow-xl transition-all group reveal-item cursor-pointer revealed">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center font-mono font-bold text-sm group-hover:bg-brand-navy group-hover:text-white group-hover:scale-110 transition-all">
+02
+</div>
+<h3 class="font-headline font-bold text-lg text-brand-navy group-hover:text-brand-blue transition-colors">Epoxy Quality</h3>
+<p class="text-slate-600 text-xs leading-relaxed">
+High-grade potting resin preventing moisture ingress, humidity bridging, and internal core displacement over time.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 font-mono text-[11px] text-brand-electric font-semibold flex items-center justify-between">
+<span class="">MOISTURE SHIELD</span>
+<span class="text-xs transition-transform group-hover:translate-x-1">→</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="spring-card p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-blue hover:shadow-xl transition-all group reveal-item cursor-pointer revealed">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center font-mono font-bold text-sm group-hover:bg-brand-navy group-hover:text-white group-hover:scale-110 transition-all">
+03
+</div>
+<h3 class="font-headline font-bold text-lg text-brand-navy group-hover:text-brand-blue transition-colors">Precision Cutting</h3>
+<p class="text-slate-600 text-xs leading-relaxed">
+Sub-micron laminated silicon steel plates guaranteeing zero residual magnetism and instant unlatching upon cutover.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 font-mono text-[11px] text-brand-electric font-semibold flex items-center justify-between">
+<span class="">ZERO RESIDUAL STICK</span>
+<span class="text-xs transition-transform group-hover:translate-x-1">→</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="spring-card p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-blue hover:shadow-xl transition-all group reveal-item cursor-pointer revealed">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center font-mono font-bold text-sm group-hover:bg-brand-navy group-hover:text-white group-hover:scale-110 transition-all">
+04
+</div>
+<h3 class="font-headline font-bold text-lg text-brand-navy group-hover:text-brand-blue transition-colors">PCB Design</h3>
+<p class="text-slate-600 text-xs leading-relaxed">
+Dual-voltage regulation, varistor surge suppression, and clean flyback voltage dump to protect host access controllers.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 font-mono text-[11px] text-brand-electric font-semibold flex items-center justify-between">
+<span class="">SURGE PROTECTION</span>
+<span class="text-xs transition-transform group-hover:translate-x-1">→</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="spring-card p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-blue hover:shadow-xl transition-all group reveal-item cursor-pointer revealed">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center font-mono font-bold text-sm group-hover:bg-brand-navy group-hover:text-white group-hover:scale-110 transition-all">
+05
+</div>
+<h3 class="font-headline font-bold text-lg text-brand-navy group-hover:text-brand-blue transition-colors">Processing Standards</h3>
+<p class="text-slate-600 text-xs leading-relaxed">
+Strict anodization, anti-rust passivation, and ISO 9001 certified assembly guaranteeing multi-year mechanical durability.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 font-mono text-[11px] text-brand-electric font-semibold flex items-center justify-between">
+<span class="">ISO 9001 MANUFACTURING</span>
+<span class="text-xs transition-transform group-hover:translate-x-1">→</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. ABOUT US & QUALITY SECTIONS: TESTING DASHBOARD -->
+<section class="py-24 border-b border-slate-200 bg-white" id="specifications">
+<div class="max-w-[1720px] mx-auto px-6 md:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16 reveal-item revealed">
+<div class="lg:col-span-6 space-y-6">
+<span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-brand-navy text-white mb-2 inline-block">005 // QA BENCHMARK</span>
+<h2 class="text-4xl md:text-6xl font-headline font-black tracking-tight text-brand-navy uppercase leading-tight">
+QUALITY SHOULD BE TESTED — NOT JUST CLAIMED.
+</h2>
+<p class="text-slate-700 text-base md:text-lg leading-relaxed font-medium">
+Elock focuses on the details that influence reliability: product construction, electrical performance, system compatibility, manufacturing consistency and long-term operation.
+</p>
+</div>
+<div class="lg:col-span-6 p-8 rounded-3xl bg-[#f8fafc] border border-slate-200 space-y-4 shadow-sm">
+<h3 class="text-xl md:text-2xl font-headline font-black text-brand-navy uppercase">
+SEE WHAT HAPPENS WHEN WE TEST THE DETAILS.
+</h3>
+<p class="text-slate-600 text-sm leading-relaxed">
+Explore how Elock evaluates product performance under defined conditions — from repeated operation and holding performance to electrical and environmental considerations. Reliability is not only about first-day performance. Product construction, operating conditions, installation and maintenance can all influence service life.
+</p>
+<div class="pt-2">
+<a class="btn-magnetic px-8 py-3.5 rounded-full bg-brand-navy hover:bg-blue-900 text-white font-headline text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-md group" href="#contact">
+<span class="">EXPLORE TESTING</span><span class="font-mono text-xs text-brand-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">↗</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Interactive Testing Dashboard Cards with telemetry shimmer & live status hover -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="spring-card relative overflow-hidden p-6 md:p-8 rounded-3xl bg-[#f8fafc] border border-slate-200 flex flex-col justify-between hover:border-brand-blue cursor-pointer reveal-item group revealed">
+<div class="space-y-3">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400">
+<span class="font-bold text-brand-navy">BENCH 01</span>
+<span class="text-brand-orange font-bold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>500,000+ CYCLES</span>
+</div>
+<h4 class="font-headline font-bold text-xl text-brand-navy group-hover:text-brand-blue transition-colors">Cycle Test</h4>
+<p class="text-slate-600 text-xs leading-relaxed">
+Continuous automated latching and unlatching cycles validating mechanical leaf resilience, coil integrity, and switch fatigue.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-200 font-mono text-xs text-brand-navy font-bold flex items-center justify-between">
+<span class="">RESULT: 500K+ ZERO FAILURE</span>
+<span class="text-brand-electric font-semibold opacity-0 group-hover:opacity-100 transition-opacity">VERIFIED ✓</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="spring-card relative overflow-hidden p-6 md:p-8 rounded-3xl bg-[#f8fafc] border border-slate-200 flex flex-col justify-between hover:border-brand-blue cursor-pointer reveal-item group revealed">
+<div class="space-y-3">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400">
+<span class="font-bold text-brand-navy">BENCH 02</span>
+<span class="text-brand-electric font-bold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-electric"></span>TENSILE DYNO</span>
+</div>
+<h4 class="font-headline font-bold text-xl text-brand-navy group-hover:text-brand-blue transition-colors">Holding Force</h4>
+<p class="text-slate-600 text-xs leading-relaxed">
+100% Calibrated tensile pull verification ensuring holding ratings deliver exact 280 kg / 545 kg structural retention.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-200 font-mono text-xs text-brand-electric font-bold flex items-center justify-between">
+<span class="">RESULT: 100% CALIBRATED</span>
+<span class="text-brand-navy font-semibold opacity-0 group-hover:opacity-100 transition-opacity">VERIFIED ✓</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="spring-card relative overflow-hidden p-6 md:p-8 rounded-3xl bg-[#f8fafc] border border-slate-200 flex flex-col justify-between hover:border-brand-blue cursor-pointer reveal-item group revealed">
+<div class="space-y-3">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400">
+<span class="font-bold text-brand-navy">BENCH 03</span>
+<span class="text-slate-500 font-bold">REGULATION ±10%</span>
+</div>
+<h4 class="font-headline font-bold text-xl text-brand-navy group-hover:text-brand-blue transition-colors">Voltage Tolerance</h4>
+<p class="text-slate-600 text-xs leading-relaxed">
+Dual-mode 12V/24V electrical tolerance stress testing across brownouts and power surges to prevent line lock dropouts.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-200 font-mono text-xs text-brand-navy font-bold flex items-center justify-between">
+<span class="">RESULT: 12V / 24V ±10% STABLE</span>
+<span class="text-brand-electric font-semibold opacity-0 group-hover:opacity-100 transition-opacity">VERIFIED ✓</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="spring-card relative overflow-hidden p-6 md:p-8 rounded-3xl bg-[#f8fafc] border border-slate-200 flex flex-col justify-between hover:border-brand-blue cursor-pointer reveal-item group revealed">
+<div class="space-y-3">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400">
+<span class="font-bold text-brand-navy">BENCH 04</span>
+<span class="text-slate-500 font-bold">THERMAL CHAMBER</span>
+</div>
+<h4 class="font-headline font-bold text-xl text-brand-navy group-hover:text-brand-blue transition-colors">Temperature Endurance</h4>
+<p class="text-slate-600 text-xs leading-relaxed">
+Extreme temperature soak testing from -20°C freezing conditions up to +60°C equatorial high-heat continuous operation.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-200 font-mono text-xs text-brand-navy font-bold flex items-center justify-between">
+<span class="">RESULT: -20°C TO +60°C RATED</span>
+<span class="text-brand-electric font-semibold opacity-0 group-hover:opacity-100 transition-opacity">VERIFIED ✓</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="spring-card relative overflow-hidden p-6 md:p-8 rounded-3xl bg-[#f8fafc] border border-slate-200 flex flex-col justify-between hover:border-brand-blue cursor-pointer reveal-item group revealed">
+<div class="space-y-3">
+<div class="flex items-center justify-between font-mono text-xs text-slate-400">
+<span class="font-bold text-brand-navy">BENCH 05</span>
+<span class="text-slate-500 font-bold">SALT SPRAY CHAMBER</span>
+</div>
+<h4 class="font-headline font-bold text-xl text-brand-navy group-hover:text-brand-blue transition-colors">Environmental Humidity</h4>
+<p class="text-slate-600 text-xs leading-relaxed">
+Salt spray and accelerated damp heat corrosion cycles ensuring flawless anodized casing survival in coastal installations.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-200 font-mono text-xs text-brand-navy font-bold flex items-center justify-between">
+<span class="">RESULT: CORROSION RESISTANT</span>
+<span class="text-brand-electric font-semibold opacity-0 group-hover:opacity-100 transition-opacity">VERIFIED ✓</span>
+</div>
+</div>
+<!-- Card 6: Benchmark Emergency Release -->
+<div class="spring-card relative overflow-hidden p-6 md:p-8 rounded-3xl bg-brand-navy text-white border border-brand-navy-dark flex flex-col justify-between hover:border-orange-500 cursor-pointer reveal-item group revealed">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent shimmer-active"></div>
+<div class="space-y-3 relative z-10">
+<div class="flex items-center justify-between font-mono text-xs text-blue-300">
+<span class="font-bold text-blue-200">BENCH 06</span>
+<span class="text-brand-orange font-bold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-orange animate-ping"></span>&lt;15MS FLYBACK CUT</span>
+</div>
+<h4 class="font-headline font-bold text-xl text-white group-hover:text-orange-300 transition-colors">Emergency Release Latency</h4>
+<p class="text-blue-100 text-xs leading-relaxed">
+Microsecond oscilloscope measurement confirming zero-residual magnetism dissipation in under 15ms upon fire alarm trip.
+</p>
+</div>
+<div class="pt-6 mt-6 border-t border-white/10 font-mono text-xs text-blue-200 font-bold flex items-center justify-between relative z-10">
+<span class="">RESULT: 0.00% RESIDUAL FLUX</span>
+<span class="text-orange-400 font-bold">CRITICAL SAFE ✓</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. OUR FOUNDER'S STORY: THE JOURNEY OF ELOCK -->
+<section class="py-24 border-b border-slate-200 bg-[#f8fafc]" id="heritage">
+<div class="max-w-[1720px] mx-auto px-6 md:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 mb-14 border-b border-slate-200 reveal-item revealed">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-brand-navy text-white">006 // OUR HERITAGE &amp; VISION</span>
+<span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-blue-50 text-brand-electric border border-blue-200">ESTABLISHED 1990</span>
+</div>
+<h2 class="text-3xl sm:text-5xl lg:text-6xl font-headline font-black tracking-tight text-brand-navy uppercase leading-tight">
+OUR FOUNDER’S STORY:<br><span class="text-brand-orange">THE JOURNEY OF ELOCK</span>
+</h2>
+</div>
+<p class="text-slate-600 max-w-xl font-mono text-xs uppercase leading-relaxed md:text-right">
+From four part-time jobs in Tokyo's bustling streets to engineering life-safety security portals across 75+ nations.
+</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5 space-y-6 reveal-item revealed">
+<div class="spring-card relative rounded-3xl overflow-hidden bg-white shadow-xl p-4 md:p-6 border border-slate-200/80">
+<div class="relative rounded-2xl overflow-hidden bg-brand-navy-dark group">
+<img alt="Michael Teo in Tokyo, Founder of Kyodensha Technologies / Elock" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMZXT3Pced0JqVh0dN5BeIfGbAHWupSgP0Y_y2DlKbUSbaXgg3lPIrUA6UQC28zumxY8Tk6yuvckNuNbdDFhMIhKSRJ0Z4lABUWcEH_JEV31Dvmkvljbmt09T1lmnw6omTXmwObO1hyRfoze64oF_YjXTz6VeTXhjnqP_NxrQQgNNBnZrudIw_lAT45GzaUdpfhULghGs7FKPFQTBC1FrEKXRjZNO0BOx620M7yWOrjNgnu1BK84Muh98HnUNx8Cyf3Q">
+<div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-white font-mono text-[10px] uppercase tracking-wider border border-white/20 flex items-center gap-1.5 shadow-lg">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse"></span>
+<span class="">Tokyo, Japan · Circa Late 1980s</span>
+</div>
+</div>
+<div class="mt-5 pt-5 border-t border-slate-200 space-y-3">
+<div class="flex items-center justify-between text-xs font-mono text-slate-400">
+<span class="font-bold text-brand-navy">ARCHIVAL PORTRAIT</span>
+<span class="text-brand-electric font-semibold">FOUNDER MICHAEL TEO</span>
+</div>
+<p class="font-body text-xs md:text-sm text-slate-600 leading-relaxed">
+Michael Teo serving and working in Tokyo, balancing day and nocturnal shifts to lay the groundwork through relentless determination before pioneering electromagnetic door locks across Southeast Asia.
+</p>
+<blockquote class="p-4 rounded-2xl bg-orange-50 border-l-4 border-brand-orange text-xs md:text-sm text-slate-800 italic font-medium leading-relaxed">
+“These weren't just jobs; they were stepping stones to a dream. Michael knew that to build something meaningful, he needed to lay a strong foundation — and that foundation was financial stability and unyielding resilience.”
+</blockquote>
+</div>
+</div>
+<div class="p-6 rounded-3xl bg-brand-navy text-white border border-brand-navy-dark flex items-center justify-between gap-4 shadow-lg">
+<div class="space-y-1">
+<span class="text-[10px] font-mono text-blue-300 uppercase tracking-widest block">FOUNDER'S CREED</span>
+<h4 class="font-headline font-bold text-base md:text-lg text-white">“Your Security is Our Responsibility”</h4>
+<p class="text-blue-100 text-xs font-body">Zero compromise on coil purity, holding force, and life-safety release.</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center font-mono text-lg text-brand-orange shrink-0">1990</div>
+</div>
+</div>
+<!-- Chapters with interactive hover highlights -->
+<div class="lg:col-span-7 space-y-8 reveal-item revealed">
+<div class="space-y-6">
+<div class="spring-card p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:border-brand-orange hover:shadow-lg transition-all cursor-pointer group">
+<div class="flex items-center justify-between font-mono text-xs pb-3 mb-3 border-b border-slate-100"><span class="font-bold text-brand-orange uppercase">CHAPTER 01 // THE TOKYO GENESIS</span><span class="text-slate-400">1980s TOKYO</span></div>
+<h3 class="text-xl md:text-2xl font-headline font-bold text-brand-navy group-hover:text-brand-orange transition-colors mb-2">Relentless Determination in Japan</h3>
+<p class="text-slate-600 text-sm md:text-base leading-relaxed">The story of Elock is not just a business narrative; it’s a testament to perseverance, resilience, and the unyielding pursuit of excellence. The company’s journey began in 1990, but its roots trace back to its founder, Michael Teo, and his relentless determination in Japan years earlier. Back then, Michael was working four part-time jobs daily, navigating the bustling streets of Tokyo. Each day, he would juggle strenuous work at dawn, noon, and late into the night, just to save every yen he could.</p>
+</div>
+<div class="spring-card p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-lg transition-all cursor-pointer group">
+<div class="flex items-center justify-between font-mono text-xs pb-3 mb-3 border-b border-slate-100"><span class="font-bold text-brand-navy uppercase">CHAPTER 02 // RETURNING HOME &amp; ESTABLISHING ELOCK</span><span class="text-brand-electric font-semibold">PUCHONG, 1990</span></div>
+<h3 class="text-xl md:text-2xl font-headline font-bold text-brand-navy group-hover:text-brand-blue transition-colors mb-2">Kyodensha Technologies (M) Sdn Bhd</h3>
+<p class="text-slate-600 text-sm md:text-base leading-relaxed">Returning to Malaysia with hard-won capital and industrial insight, Michael founded Kyodensha Technologies in 1990. Rather than simply reselling cheap imported commodities, he spearheaded homegrown electromagnetic locking innovation: winding proprietary triple-insulated copper coils, integrating silicon steel armatures, and mastering instant zero-residual demagnetization release hardware.</p>
+</div>
+<div class="spring-card p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-lg transition-all cursor-pointer group">
+<div class="flex items-center justify-between font-mono text-xs pb-3 mb-3 border-b border-slate-100"><span class="font-bold text-brand-electric uppercase">CHAPTER 03 // THE ENGINEERING PHILOSOPHY</span><span class="text-slate-400">GLOBAL QUALITY</span></div>
+<h3 class="text-xl md:text-2xl font-headline font-bold text-brand-navy group-hover:text-brand-blue transition-colors mb-2">From Puchong Assembly to 75+ Nations</h3>
+<p class="text-slate-600 text-sm md:text-base leading-relaxed">Today, under the Elock brand, Kyodensha products safeguard iconic landmarks, hospitals, and critical infrastructure worldwide. Every production run undergoes rigorous dyno tensile pull tests and NFPA 101 fire cut compliance, ensuring that when human lives hang in the balance, our portals release in 0.00ms unconditionally.</p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="btn-magnetic px-8 py-4 rounded-full bg-brand-orange hover:bg-orange-700 text-white font-headline text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 shadow-md shadow-orange-600/20 group" href="#contact">
+<span class="">Plan My Door System</span><span class="font-mono text-sm transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">↗</span>
+</a>
+<a class="btn-magnetic px-8 py-4 rounded-full bg-slate-100 hover:bg-brand-navy hover:text-white text-slate-800 font-headline text-xs font-bold uppercase tracking-wider transition-all border border-slate-300 flex items-center gap-2 group" href="#installations">
+<span class="">View Global Landmark Works</span><span class="font-mono text-sm transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Milestone Counter Stats with live animated count-up -->
+<div class="my-12 py-10 px-8 bg-white border border-slate-200 rounded-3xl shadow-sm text-center reveal-item revealed" id="milestone-counter-stats">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+<div class="flex flex-col items-center justify-center group cursor-default">
+<span class="text-5xl md:text-6xl font-headline font-black text-brand-electric tracking-tight stat-count-value transition-transform group-hover:scale-105" data-suffix="" data-target="75">75</span>
+<span class="mt-3 text-lg md:text-xl font-headline font-bold text-brand-navy">Regions Covered</span>
+</div>
+<div class="flex flex-col items-center justify-center group cursor-default">
+<span class="text-5xl md:text-6xl font-headline font-black text-brand-electric tracking-tight stat-count-value transition-transform group-hover:scale-105" data-suffix="" data-target="33">33</span>
+<span class="mt-3 text-lg md:text-xl font-headline font-bold text-brand-navy">years of experiences</span>
+</div>
+<div class="flex flex-col items-center justify-center group cursor-default">
+<span class="text-5xl md:text-6xl font-headline font-black text-brand-electric tracking-tight stat-count-value transition-transform group-hover:scale-105" data-suffix="+" data-target="108239">108,239+</span>
+<span class="mt-3 text-lg md:text-xl font-headline font-bold text-brand-navy">satisfied clients</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. GLOBAL FOOTPRINT & LANDMARK WORKS -->
+<section class="py-24 border-b border-slate-200 bg-[#f8fafc]" id="global-network">
+<div class="max-w-[1720px] mx-auto px-6 md:px-12">
+<div class="p-8 md:p-14 lg:p-16 rounded-3xl bg-[#0a1936] text-white border border-slate-800 shadow-2xl relative overflow-hidden mb-16 reveal-item revealed">
+<div class="absolute top-0 right-0 w-96 h-96 bg-[#1e3a8a]/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+<div class="absolute bottom-0 left-1/3 w-80 h-80 bg-[#38bdf8]/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
+<!-- Left Column -->
+<div class="lg:col-span-6 space-y-6">
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-blue-500/20 text-[#38bdf8] border border-blue-400/30">
+007 // GLOBAL REACH
+</span>
+<span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono text-slate-300 bg-white/5 border border-white/10 uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-[#ea580c] animate-pulse"></span>
+PUCHONG HQ LIVE NODE
+</span>
+</div>
+<div>
+<span class="text-xs font-mono uppercase tracking-widest text-slate-400 block mb-1">Our International Distribution Matrix</span>
+<h2 class="text-3xl md:text-5xl lg:text-5xl font-headline font-black tracking-tight text-white uppercase leading-tight">
+BUILT IN MALAYSIA. TRUSTED AROUND THE WORLD.
+</h2>
+<p class="text-slate-300 text-sm mt-3 font-mono">
+Active deployment across key markets: UAE, Indonesia, Vietnam, South Africa, Saudi Arabia, Singapore, and beyond.
+</p>
+</div>
+<p class="text-slate-300 text-sm md:text-base leading-relaxed">
+From our Puchong manufacturing headquarters in Malaysia to commercial towers across 75+ nations, Elock engineers the world’s most trusted electromagnetic locks, power supply matrices, and NFPA 101 fail-safe egress assemblies.
+</p>
+<!-- Key Statistics Chips -->
+<div class="grid grid-cols-3 gap-3 pt-2 font-mono">
+<div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors">
+<span class="block text-xl md:text-2xl font-headline font-black text-[#38bdf8]">75+</span>
+<span class="text-[10px] text-slate-400 uppercase tracking-wider block mt-0.5">Countries</span>
+</div>
+<div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors">
+<span class="block text-xl md:text-2xl font-headline font-black text-white">108K+</span>
+<span class="text-[10px] text-slate-400 uppercase tracking-wider block mt-0.5">Systems Deployed</span>
+</div>
+<div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors">
+<span class="block text-xl md:text-2xl font-headline font-black text-[#ea580c]">0.00ms</span>
+<span class="text-[10px] text-slate-400 uppercase tracking-wider block mt-0.5">Fail-Safe Release</span>
+</div>
+</div>
+<!-- Regional Channels Breakdown -->
+<div class="space-y-2.5 font-mono text-xs pt-1">
+<div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between hover:bg-white/10 transition-colors">
+<span class="text-white font-bold">SOUTHEAST ASIA &amp; PACIFIC</span>
+<span class="text-slate-300 text-[11px]">Malaysia, Indonesia, Vietnam, Singapore, Thailand</span>
+</div>
+<div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between hover:bg-white/10 transition-colors">
+<span class="text-white font-bold">MIDDLE EAST &amp; GCC</span>
+<span class="text-slate-300 text-[11px]">UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman</span>
+</div>
+<div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between hover:bg-white/10 transition-colors">
+<span class="text-white font-bold">AFRICA, EUROPE &amp; AMERICAS</span>
+<span class="text-slate-300 text-[11px]">South Africa, UK, Germany, Turkey, Americas</span>
+</div>
+</div>
+<!-- CTAs -->
+<div class="pt-4 flex flex-wrap gap-4 font-mono text-xs">
+<a class="btn-magnetic px-7 py-3.5 rounded-full bg-white text-[#0f2b5c] font-headline text-xs font-bold uppercase tracking-wider hover:bg-slate-100 transition-all inline-flex items-center gap-2 shadow-lg group" href="#contact">
+<span class="">FIND A DISTRIBUTOR</span><span class="text-[#ea580c] font-bold transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">↗</span>
+</a>
+</div>
+</div>
+<!-- Right Column: Interactive 3D Globe -->
+<div class="lg:col-span-6 relative flex flex-col items-center justify-center">
+<div class="w-full relative rounded-3xl overflow-hidden bg-slate-950/80 border border-slate-800 shadow-2xl p-2 md:p-4 select-none">
+<div class="w-full h-[450px] bg-transparent rounded-2xl block relative z-10 cursor-grab active:cursor-grabbing select-none" id="three-globe-container"><canvas width="465" height="450" style="display: block; width: 465px; height: 450px;"></canvas></div>
+<div class="absolute bottom-6 left-6 z-20 flex items-center gap-2 font-mono text-[10px] text-slate-400 bg-black/60 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10 pointer-events-none">
+<span class="w-2 h-2 rounded-full bg-[#ea580c] animate-ping"></span>
+DRAG TO ROTATE GLOBAL MESH
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Landmark Works Cards -->
+<div id="installations">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-item revealed">
+<div>
+<span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-brand-navy text-white mb-3 inline-block">PROVEN AT SCALE</span>
+<h3 class="text-3xl md:text-5xl font-headline font-black tracking-tight text-brand-navy uppercase">LANDMARK WORKS</h3>
+</div>
+<p class="text-slate-500 max-w-md font-mono text-xs uppercase leading-relaxed">
+Real landmark installations across UAE, Southeast Asia, and international infrastructure perimeters.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Project 1: Burj Khalifa -->
+<div class="spring-card group bg-white rounded-3xl overflow-hidden border border-slate-200 hover:shadow-2xl hover:border-brand-blue/30 transition-all duration-500 flex flex-col justify-between reveal-item cursor-pointer revealed">
+<div>
+<div class="relative h-64 overflow-hidden bg-slate-200">
+<img alt="Burj Khalifa Tower Dubai" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1VLfDbDck2o-Uoe16reagovtdoajqTucAlRgXJaLzIao2gFbY1kbiThzgNRfu6feYsTI0ys5IQig6eyzSNz-fwwcm-Qr7RhK1JJyKCN9u-Vx0HMDwBBl5HrXujkaTn7eZoVyAOOMkPWC4aS-vX2V6A99_-pDUCFmQ8qZUeD1FV0AjLCu32WLn5f_jt2Pt9NxkF43HHQVnwvpBgcTD2xutuivHbg02F_8L5GfoC-VPKn1gmFfRu9PM1qWkQ">
+<div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-mono text-[10px] uppercase flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse"></span>
+  DUBAI, UAE
+</div>
+<div class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white flex items-center justify-center font-grotesk text-brand-navy text-xs group-hover:rotate-45 group-hover:bg-brand-orange group-hover:text-white transition-all shadow-md">↗</div>
+</div>
+<div class="p-6 space-y-3">
+<h4 class="text-xl font-headline font-bold text-brand-navy tracking-tight group-hover:text-brand-blue transition-colors">Burj Khalifa Tower</h4>
+<p class="text-slate-600 text-xs leading-relaxed">Pressurized fire escape stairwells engineered to release instantaneously despite extreme high-rise stack pressure differentials.</p>
+</div>
+</div>
+<div class="p-6 pt-0 font-mono text-[11px] text-slate-500 border-t border-slate-100 mt-4 flex items-center justify-between">
+<span class="">SPEC:</span><span class="text-brand-navy font-bold">ELOCK-1200 FIRE EGRESS</span>
+</div>
+</div>
+<!-- Project 2: Huawei Commercial Campus -->
+<div class="spring-card group bg-white rounded-3xl overflow-hidden border border-slate-200 hover:shadow-2xl hover:border-brand-blue/30 transition-all duration-500 flex flex-col justify-between reveal-item cursor-pointer revealed">
+<div>
+<div class="relative h-64 overflow-hidden bg-slate-200">
+<img alt="Huawei Commercial Tower HQ Campus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1V-j3i7HkJJzhXUFOdHTvESatfubORekbaPjDFyh97Nhw4p4S0GqQr9J78jA9sb7AIGbtTk5ggJGkkGPnQm4WiSIjDv0wvciJdev471yAqAyiRnLjDgDpglGCmaWqPcUGyZMsMg6Wi92nMRk3ZRalP3qGqfNyUxXISuyucIDt2f_L2ICz_oiepe4aJyxeOm9dK0-N4atxareAOaexOxfiZSNxs-O2Xz1XNjzTexYPZyx8Aev9618YuOCLE">
+<div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-mono text-[10px] uppercase flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-electric"></span>
+  REGIONAL HQ
+</div>
+<div class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white flex items-center justify-center font-grotesk text-brand-navy text-xs group-hover:rotate-45 group-hover:bg-brand-orange group-hover:text-white transition-all shadow-md">↗</div>
+</div>
+<div class="p-6 space-y-3">
+<h4 class="text-xl font-headline font-bold text-brand-navy tracking-tight group-hover:text-brand-blue transition-colors">Huawei Commercial Tower</h4>
+<p class="text-slate-600 text-xs leading-relaxed">Seamless architectural glass access control across multiple administrative floors with zero exposed wiring conduits.</p>
+</div>
+</div>
+<div class="p-6 pt-0 font-mono text-[11px] text-slate-500 border-t border-slate-100 mt-4 flex items-center justify-between">
+<span class="">SPEC:</span><span class="text-brand-navy font-bold">ELOCK-600A + U-BRACKETS</span>
+</div>
+</div>
+<!-- Project 3: Aster Hospital -->
+<div class="spring-card group bg-white rounded-3xl overflow-hidden border border-slate-200 hover:shadow-2xl hover:border-brand-blue/30 transition-all duration-500 flex flex-col justify-between reveal-item cursor-pointer revealed">
+<div>
+<div class="relative h-64 overflow-hidden bg-slate-200">
+<img alt="Aster Surgical Hospital Medical Facility" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1VVRohcyfFSzmrLwkDBJSFtZhmIx0l_9B_x4GOStOilLfXJIpP93vxcooA8EcfTNRx189Yqfjvc0yi6mxGOXfk7ldvlTbKbbwLLUP3HD--X2oFIwJ5p__20qn30kPkV5qiTNCGcMglQjCQMN4lb_wDpXCyhHuE_zag7gQdH61Bxm7_zcK2-CDSfNPeCxXSPJ5eR3eK5N9GkU5uzfG7sV7JEY-yM3bmR6KsUDKXnlc4E6S1sJ6mDOPo9OTI">
+<div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-mono text-[10px] uppercase flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-electric"></span>
+  HEALTHCARE
+</div>
+<div class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white flex items-center justify-center font-grotesk text-brand-navy text-xs group-hover:rotate-45 group-hover:bg-brand-orange group-hover:text-white transition-all shadow-md">↗</div>
+</div>
+<div class="p-6 space-y-3">
+<h4 class="text-xl font-headline font-bold text-brand-navy tracking-tight group-hover:text-brand-blue transition-colors">Aster Surgical Hospital</h4>
+<p class="text-slate-600 text-xs leading-relaxed">Sterile surgical airlocks and rapid-transit ICU corridor doors with antimicrobial egress points and interlocking dual-door control.</p>
+</div>
+</div>
+<div class="p-6 pt-0 font-mono text-[11px] text-slate-500 border-t border-slate-100 mt-4 flex items-center justify-between">
+<span class="">SPEC:</span><span class="text-brand-navy font-bold">INTERLOCK PSU + TOUCHLESS</span>
+</div>
+</div>
+<!-- Project 4: Yas Village & Federal Supreme Court -->
+<div class="spring-card group bg-white rounded-3xl overflow-hidden border border-slate-200 hover:shadow-2xl hover:border-brand-blue/30 transition-all duration-500 flex flex-col justify-between reveal-item cursor-pointer revealed">
+<div>
+<div class="relative h-64 overflow-hidden bg-slate-200">
+<img alt="Yas Village &amp; Federal Supreme Court" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv2hSLqIQFKnqZ--a68bLbRvxDidVM6-Ad60xoLolisS4cDQuTY-BKUPzIGNKH1d6surKNeb4EEPMekdP7G38TuPjgr43KhWntTqTrpJtO2kaViyfE3uJEHNUY45ZKQJXbVm-oHNYz32_1bMWfX9KKxMHZ-6xgUoz0NDo0NY6YCd6q_NVifpuFX5a_UGqhzLT81B7cK0HAaym_cpMGHdJrt3MQLiaVXEWPySdjTIgZIaeEwCumY9lgfiP7Yt-txxP9Hw">
+<div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-mono text-[10px] uppercase flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse"></span>
+  ABU DHABI / UAE
+</div>
+<div class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white flex items-center justify-center font-grotesk text-brand-navy text-xs group-hover:rotate-45 group-hover:bg-brand-orange group-hover:text-white transition-all shadow-md">↗</div>
+</div>
+<div class="p-6 space-y-3">
+<h4 class="text-xl font-headline font-bold text-brand-navy tracking-tight group-hover:text-brand-blue transition-colors">Yas Village &amp; Supreme Court</h4>
+<p class="text-slate-600 text-xs leading-relaxed">High-security institutional perimeter doors and massive master-planned residential staff quarters requiring uncompromised egress safety.</p>
+</div>
+</div>
+<div class="p-6 pt-0 font-mono text-[11px] text-slate-500 border-t border-slate-100 mt-4 flex items-center justify-between">
+<span class="">SPEC:</span><span class="text-brand-navy font-bold">E-1200 + BREAK GLASS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. FINAL CLOSING & CTA SECTION -->
+<section class="py-24 bg-white" id="contact">
+<div class="max-w-[1720px] mx-auto px-6 md:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5 space-y-8 reveal-item revealed">
+<div>
+<span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-brand-orange text-white mb-3 inline-block shadow-sm">
+008 // CONSULTATION
+</span>
+<h2 class="text-4xl md:text-5xl font-headline font-black tracking-tight text-brand-navy uppercase leading-tight">
+YOUR DOOR HAS A REQUIREMENT. LET’S BUILD THE RIGHT SYSTEM.
+</h2>
+</div>
+<p class="text-slate-600 text-base leading-relaxed">
+Whether you are specifying a new project, replacing an existing lock or solving a door-security problem, Elock can help you identify the right components for the application.
+</p>
+<div class="flex flex-wrap items-center gap-3 pt-2">
+<a class="btn-magnetic px-6 py-3 rounded-full bg-brand-navy text-white font-headline text-xs font-bold uppercase tracking-wider hover:bg-blue-900 transition-all flex items-center gap-2 shadow-md group" href="#planDoorForm">
+<span class="">PLAN MY DOOR SYSTEM</span><span class="font-mono text-xs text-brand-orange transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">↗</span>
+</a>
+<a class="btn-magnetic px-6 py-3 rounded-full border border-slate-300 bg-slate-50 hover:bg-white text-slate-800 font-headline text-xs font-bold uppercase tracking-wider transition-all" href="tel:+60380664636">
+<span class="">TALK TO AN ENGINEER</span>
+</a>
+</div>
+<div class="space-y-4 pt-4 border-t border-slate-200 font-mono text-xs">
+<div class="spring-card p-4 rounded-2xl bg-[#f8fafc] border border-slate-200 flex items-start gap-4">
+<span class="material-symbols-outlined text-brand-navy mt-0.5">location_on</span>
+<div>
+<span class="text-slate-400 block text-[10px]">HEADQUARTERS ADDRESS</span>
+<span class="text-slate-800 font-sans text-xs font-medium">12A, Jln PPU 3A, Pusat Teknologi Sinar, 47150 Puchong, Selangor, Malaysia</span>
+</div>
+</div>
+<a class="spring-card flex items-center gap-4 p-4 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-brand-blue hover:bg-blue-50/30 transition-all" href="tel:+60380664636">
+<span class="material-symbols-outlined text-brand-electric">call</span>
+<div>
+<span class="text-slate-400 block text-[10px]">DIRECT TELEPHONE</span>
+<span class="text-brand-navy font-bold text-sm">+60 3-8066 4636</span>
+</div>
+</a>
+<div class="spring-card p-4 rounded-2xl bg-[#f8fafc] border border-slate-200 flex items-start gap-4">
+<span class="material-symbols-outlined text-brand-navy mt-0.5">schedule</span>
+<div>
+<span class="text-slate-400 block text-[10px]">OPERATING HOURS</span>
+<span class="text-slate-800 font-sans text-xs">Monday – Friday: 8:30am – 6:00pm (GMT+8)</span>
+</div>
+</div>
+<a class="spring-card flex items-center gap-4 p-4 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-brand-orange hover:bg-orange-50/30 transition-all" href="https://wa.me/60380664636" target="_blank">
+<span class="material-symbols-outlined text-brand-orange">chat</span>
+<div>
+<span class="text-slate-400 block text-[10px]">WHATSAPP ENGINEERING DESK</span>
+<span class="text-brand-navy font-bold text-sm">Instant Engineer Chat</span>
+</div>
+</a>
+<a class="spring-card flex items-center gap-4 p-4 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-brand-blue hover:bg-blue-50/30 transition-all" href="mailto:enquiry@elock2u.net">
+<span class="material-symbols-outlined text-brand-electric">mail</span>
+<div>
+<span class="text-slate-400 block text-[10px]">OFFICIAL TECHNICAL DESK</span>
+<span class="text-brand-navy font-bold text-sm">enquiry@elock2u.net</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Interactive Inquiry Form with floating focus and micro-feedback -->
+<div class="lg:col-span-7 bg-[#f8fafc] border border-slate-200 p-8 md:p-12 rounded-3xl shadow-sm reveal-item revealed">
+<form class="space-y-6" id="planDoorForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-mono text-xs uppercase text-slate-500" for="name">Your Full Name *</label>
+<input class="w-full px-5 py-4 rounded-2xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/10 transition-all" id="name" placeholder="e.g. Jason Chee" required="" type="text">
+</div>
+<div class="space-y-2">
+<label class="font-mono text-xs uppercase text-slate-500" for="email">Work Email *</label>
+<input class="w-full px-5 py-4 rounded-2xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/10 transition-all" id="email" placeholder="jason@contractor.com" required="" type="email">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-mono text-xs uppercase text-slate-500" for="company">Company / Project Name</label>
+<input class="w-full px-5 py-4 rounded-2xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/10 transition-all" id="company" placeholder="Apex Engineering Sdn Bhd" type="text">
+</div>
+<div class="space-y-2">
+<label class="font-mono text-xs uppercase text-slate-500" for="profile">Specification Role: *</label>
+<select class="w-full px-5 py-4 rounded-2xl bg-white border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/10 transition-all cursor-pointer" id="profile" required="">
+<option value="">Select role...</option>
+<option value="installer">ELV Contractor / Installer</option>
+<option value="consultant">Security Consultant / Architect</option>
+<option value="distributor">Distributor / Reseller</option>
+<option value="building_owner">Facility Manager / Building Owner</option>
+<option value="other">General Architectural Tender</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-mono text-xs uppercase text-slate-500" for="requirements">Door Hardware Details &amp; Requirements *</label>
+<textarea class="w-full px-5 py-4 rounded-2xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/10 transition-all resize-none" id="requirements" placeholder="Describe door material (frameless glass, timber, fire-rated metal), portal quantity, holding force needed (600 or 1200 lbs), bracket styles (ZL / U-Bracket), and power requirements..." required="" rows="4"></textarea>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
+<button class="btn-magnetic w-full sm:w-auto px-10 py-4 rounded-full bg-brand-orange text-white font-headline text-xs font-bold uppercase tracking-wider hover:bg-orange-700 transition-all flex items-center justify-center gap-3 shadow-md shadow-orange-600/20 group" type="submit">
+<span class="">PLAN MY DOOR SYSTEM</span><span class="font-mono text-sm transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">↗</span>
+</button>
+<span class="font-mono text-[10px] text-slate-500 uppercase text-center sm:text-right flex items-center gap-1.5 justify-center sm:justify-end">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-electric"></span>
+  1 Business Day Response Guaranteed
+</span>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 9. FOOTER -->
+<footer class="w-full bg-[#0a0a0a] text-white pt-20 pb-12 border-t border-slate-800">
+<div class="max-w-[1720px] mx-auto px-6 md:px-12 flex flex-col justify-between gap-16">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-16 border-b border-slate-800">
+<div>
+<span class="font-mono text-xs uppercase text-slate-400 tracking-widest block mb-2">END OF SYSTEM CATALOGUE</span>
+<h2 class="text-4xl md:text-7xl font-headline font-black uppercase tracking-tight leading-none">
+SECURE WHEN NEEDED.<br><span class="text-blue-400">RELEASE WHEN IT MATTERS.</span>
+</h2>
+<p class="mt-4 text-slate-400 text-sm md:text-base font-body max-w-xl">
+Elock — door security designed around reliability, system performance and the moments that matter.
+</p>
+</div>
+<div>
+<a class="btn-magnetic px-8 py-4 rounded-full bg-white text-brand-navy font-headline text-xs font-bold uppercase tracking-wider hover:bg-slate-100 transition-all inline-flex items-center gap-2 group" href="https://www.elock2u.net/product/" target="_blank">
+<span class="">DOWNLOAD OUR CATALOGUE</span><span class="transition-transform group-hover:translate-y-0.5">↓</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 font-mono text-xs">
+<div class="space-y-4">
+<span class="text-slate-500 uppercase tracking-widest text-[10px] block">HARDWARE</span>
+<ul class="space-y-2 text-slate-300">
+<li class=""><a class="hover:text-white transition-colors" href="#cost-quality">EM Locks 600 Lbs</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#cost-quality">EM Locks 1200 Lbs</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#schematic">Emergency Break Glass</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#schematic">Regulated Power Supplies</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#schematic">ZL &amp; U Brackets</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<span class="text-slate-500 uppercase tracking-widest text-[10px] block">LANDMARKS</span>
+<ul class="space-y-2 text-slate-300">
+<li class=""><a class="hover:text-white transition-colors" href="#installations">Burj Khalifa Dubai</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#installations">Huawei Commercial Tower</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#installations">Aster Surgical Hospital</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#installations">Federal Supreme Court</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<span class="text-slate-500 uppercase tracking-widest text-[10px] block">ENGINEERING</span>
+<ul class="space-y-2 text-slate-300">
+<li class=""><a class="hover:text-white transition-colors" href="#specifications">CE Declaration</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#specifications">ISO 9001 Reports</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#specifications">Residual Flux Data</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#specifications">Puchong Test Lab</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<span class="text-slate-500 uppercase tracking-widest text-[10px] block">DIRECT ECOMMERCE</span>
+<ul class="space-y-2 text-slate-300">
+<li class=""><a class="hover:text-white transition-colors" href="https://shopee.com.my" target="_blank">Shopee Official Store ↗</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://lazada.com.my" target="_blank">Lazada Official Store ↗</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#contact">Become a Distributor</a></li>
+</ul>
+</div>
+<div class="space-y-4 col-span-2">
+<span class="text-slate-500 uppercase tracking-widest text-[10px] block">KYODENSHA TECHNOLOGIES</span>
+<p class="text-slate-400 font-sans text-xs leading-relaxed">
+Kyodensha Technologies (M) Sdn Bhd (Company No. 0207536-M) is an international developer and manufacturer of high-assurance magnetic access systems, supplying infrastructure safety devices across Southeast Asia, the Middle East, Europe, and the Americas since 1990.
+</p>
+<div class="flex items-center gap-3 pt-2 text-[10px] text-slate-400">
+<span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">ISO 9001:2015</span>
+<span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">CE CERTIFIED</span>
+<span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">MCMC APPROVED</span>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[11px] text-slate-500">
+<div class="">© 2026 KYODENSHA TECHNOLOGIES (M) SDN BHD (0207536-M). ALL RIGHTS RESERVED.</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-white transition-colors" href="#">PRIVACY POLICY</a>
+<a class="hover:text-white transition-colors" href="#">TERMS &amp; COMPLIANCE</a>
+<a class="hover:text-white transition-colors" href="#">WARRANTY PROTOCOL</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Interactive Scripts: Three.js 3D Globe, Counters, Schematic Sync, and Scroll Observer -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // 1. Scroll-triggered reveal animations
+  function initScrollReveal() {
+    const revealItems = document.querySelectorAll('.reveal-item');
+    if (!revealItems.length) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1
+    });
+
+    revealItems.forEach(el => observer.observe(el));
+  }
+
+  // 2. Milestone counter animations
+  function initCounters() {
+    const counterElements = document.querySelectorAll('.stat-count-value');
+    if (!counterElements.length) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+          const suffix = el.getAttribute('data-suffix') || '';
+          const duration = 1800;
+          const startTime = performance.now();
+
+          function update(now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const current = Math.floor(easeOutQuart * target);
+            el.textContent = current.toLocaleString() + suffix;
+            if (progress < 1) {
+              requestAnimationFrame(update);
+            } else {
+              el.textContent = target.toLocaleString() + suffix;
+            }
+          }
+          requestAnimationFrame(update);
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    counterElements.forEach(el => observer.observe(el));
+  }
+
+  // 3. Interactive Door Schematic Circuit Highlighting
+  function initSchematicInteraction() {
+    const nodes = document.querySelectorAll('.schematic-node');
+    const pathPsuLock = document.getElementById('path-psu-lock');
+    const pathReader = document.getElementById('path-reader');
+    const pathBreakglass = document.getElementById('path-breakglass');
+    const svgLock = document.getElementById('svg-lock');
+    const svgReader = document.getElementById('svg-reader');
+    const svgBreakglass = document.getElementById('svg-breakglass');
+    const svgPsu = document.getElementById('svg-psu');
+    const label = document.getElementById('schematicLabel');
+    const status = document.getElementById('schematicStatus');
+
+    if (!nodes.length) return;
+
+    nodes.forEach(node => {
+      node.addEventListener('mouseenter', () => {
+        const type = node.getAttribute('data-schematic');
+        resetSchematic();
+
+        if (type === 'lock') {
+          if (svgLock) svgLock.classList.add('schematic-active-core');
+          if (pathPsuLock) pathPsuLock.classList.add('schematic-active-line');
+          if (label) label.textContent = 'NODE 02 // FAIL-SAFE HOLDING CORE';
+          if (status) status.innerHTML = '<span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>HOLDING 600 LBS';
+        } else if (type === 'reader') {
+          if (svgReader) svgReader.setAttribute('fill', '#2563eb');
+          if (pathReader) pathReader.classList.add('schematic-active-line');
+          if (label) label.textContent = 'NODE 01 // ENCRYPTED WIEGAND/OSDP BUS';
+          if (status) status.innerHTML = '<span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>POLLING AUTHORIZED';
+        } else if (type === 'breakglass') {
+          if (svgBreakglass) svgBreakglass.classList.add('schematic-active-core');
+          if (pathBreakglass) pathBreakglass.classList.add('schematic-active-line');
+          if (label) label.textContent = 'NODE 04 // PHYSICAL FIRE ISOLATOR';
+          if (status) status.innerHTML = '<span class="w-2 h-2 rounded-full bg-[#ea580c] animate-ping"></span>INSTANT RELAY DUMP';
+        } else if (type === 'psu' || type === 'battery') {
+          if (svgPsu) svgPsu.classList.add('schematic-active-core');
+          if (pathPsuLock) pathPsuLock.classList.add('schematic-active-line');
+          if (label) label.textContent = 'NODE 05/06 // 12V/24V CLEAN REGULATION';
+          if (status) status.innerHTML = '<span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>TRANSIENT PROTECTED';
+        } else {
+          if (pathReader) pathReader.classList.add('schematic-active-line');
+          if (label) label.textContent = 'NODE 03 // CONTACT INTERRUPT';
+        }
+      });
+
+      node.addEventListener('mouseleave', () => {
+        resetSchematic();
+        if (label) label.textContent = 'CIRCUIT INTEGRITY SCHEMATIC';
+        if (status) status.innerHTML = '<span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>LOOP CLOSED';
+      });
+    });
+
+    function resetSchematic() {
+      if (pathPsuLock) pathPsuLock.classList.remove('schematic-active-line');
+      if (pathReader) pathReader.classList.remove('schematic-active-line');
+      if (pathBreakglass) pathBreakglass.classList.remove('schematic-active-line');
+      if (svgLock) svgLock.classList.remove('schematic-active-core');
+      if (svgBreakglass) svgBreakglass.classList.remove('schematic-active-core');
+      if (svgPsu) svgPsu.classList.remove('schematic-active-core');
+      if (svgReader) svgReader.setAttribute('fill', '#1e293b');
+    }
+  }
+
+  // 4. Interactive 3D Globe Canvas with drag responsiveness
+  function initThreeGlobe() {
+    const container = document.getElementById('three-globe-container');
+    if (!container || typeof THREE === 'undefined') return;
+
+    const width = container.clientWidth || 500;
+    const height = container.clientHeight || 450;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    camera.position.z = 210;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    container.innerHTML = '';
+    container.appendChild(renderer.domElement);
+
+    const globeGroup = new THREE.Group();
+    scene.add(globeGroup);
+
+    const sphereGeo = new THREE.SphereGeometry(75, 28, 28);
+    const wireframeMat = new THREE.MeshBasicMaterial({
+      color: 0x1e3a8a,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.35
+    });
+    const globeWire = new THREE.Mesh(sphereGeo, wireframeMat);
+    globeGroup.add(globeWire);
+
+    const pointCount = 650;
+    const positions = new Float32Array(pointCount * 3);
+    for (let i = 0; i < pointCount; i++) {
+      const phi = Math.acos(-1 + (2 * i) / pointCount);
+      const theta = Math.sqrt(pointCount * Math.PI) * phi;
+      const r = 75;
+      positions[i * 3] = r * Math.cos(theta) * Math.sin(phi);
+      positions[i * 3 + 1] = r * Math.sin(theta) * Math.sin(phi);
+      positions[i * 3 + 2] = r * Math.cos(phi);
+    }
+    const pointsGeo = new THREE.BufferGeometry();
+    pointsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const pointsMat = new THREE.PointsMaterial({
+      color: 0x38bdf8,
+      size: 1.8,
+      transparent: true,
+      opacity: 0.8
+    });
+    const pointsMesh = new THREE.Points(pointsGeo, pointsMat);
+    globeGroup.add(pointsMesh);
+
+    // Puchong HQ Beacon (Pulsing Orange)
+    const hqGeo = new THREE.SphereGeometry(3, 16, 16);
+    const hqMat = new THREE.MeshBasicMaterial({ color: 0xea580c });
+    const hqMesh = new THREE.Mesh(hqGeo, hqMat);
+    hqMesh.position.set(70, 4, 25);
+    globeGroup.add(hqMesh);
+
+    // Global Hub Beacons (UAE, Europe, East Asia)
+    const hubPositions = [
+      [58, 28, 40],
+      [35, 52, 45],
+      [60, 36, -30]
+    ];
+    hubPositions.forEach(pos => {
+      const hubGeo = new THREE.SphereGeometry(2, 12, 12);
+      const hubMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+      const hubMesh = new THREE.Mesh(hubGeo, hubMat);
+      hubMesh.position.set(pos[0], pos[1], pos[2]);
+      globeGroup.add(hubMesh);
+    });
+
+    let isDragging = false;
+    let prevMousePos = { x: 0, y: 0 };
+
+    container.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      prevMousePos = { x: e.clientX, y: e.clientY };
+    });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    container.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - prevMousePos.x;
+      const dy = e.clientY - prevMousePos.y;
+      globeGroup.rotation.y += dx * 0.005;
+      globeGroup.rotation.x += dy * 0.005;
+      prevMousePos = { x: e.clientX, y: e.clientY };
+    });
+
+    // Touch support
+    container.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+    });
+    window.addEventListener('touchend', () => { isDragging = false; });
+    container.addEventListener('touchmove', (e) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - prevMousePos.x;
+      const dy = e.touches[0].clientY - prevMousePos.y;
+      globeGroup.rotation.y += dx * 0.005;
+      globeGroup.rotation.x += dy * 0.005;
+      prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    });
+
+    window.addEventListener('resize', () => {
+      const newWidth = container.clientWidth;
+      const newHeight = container.clientHeight;
+      if (newWidth && newHeight) {
+        camera.aspect = newWidth / newHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(newWidth, newHeight);
+      }
+    });
+
+    let clock = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      clock += 0.03;
+      if (!isDragging) {
+        globeGroup.rotation.y += 0.0025;
+      }
+      const scalePulse = 1 + Math.sin(clock) * 0.15;
+      hqMesh.scale.set(scalePulse, scalePulse, scalePulse);
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+
+  // 5. Hero Card subtle 3D tilt on mousemove
+  function initHeroCardTilt() {
+    const card = document.getElementById('heroHardwareCard');
+    if (!card) return;
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -3;
+      const rotateY = ((x - centerX) / centerX) * 3;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+    initCounters();
+    initSchematicInteraction();
+    initThreeGlobe();
+    initHeroCardTilt();
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
